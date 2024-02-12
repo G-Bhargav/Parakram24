@@ -10,14 +10,14 @@ import com.explore.parakram24.R
 
 class ViewPagerAdapter : RecyclerView.Adapter<ViewPagerAdapter.ViewHolder>() {
     inner class ViewHolder(view : View) : RecyclerView.ViewHolder(view)
-    val list = listOf(R.drawable.d1, R.drawable.d2,R.drawable.d3,R.drawable.d4,R.drawable.d5,R.drawable.d6)
+    val list = listOf( R.drawable.d2,R.drawable.d3,R.drawable.d4,R.drawable.d5,R.drawable.d6,R.drawable.d1,R.drawable.d7)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val viewHolder = LayoutInflater.from(parent.context).inflate(R.layout.item_corousel,parent,false)
         return ViewHolder(viewHolder)
     }
 
     override fun getItemCount(): Int {
-        return 6
+        return list.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

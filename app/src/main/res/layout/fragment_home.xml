@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,47 +7,69 @@
     android:background="@color/transparent"
     android:fillViewport="true"
     android:orientation="vertical"
+    android:scrollbars="none"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    tools:context=".HomeFragment"
-    tools:ignore="hardcodedText"
-    android:scrollbars="none">
+    tools:context=".fragments.HomeFragment"
+    tools:ignore="hardcodedText">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <!--        <TextView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:fontFamily="cursive"-->
+        <!--            android:gravity="center"-->
+        <!--            android:text="IIT(ISM) Dhanbad"-->
+        <!--            android:textAppearance="@style/h1"-->
+        <!--            android:textStyle="bold" />-->
+
+        <!--        <TextView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginBottom="-30dp"-->
+        <!--            android:fontFamily="sans-serif-condensed-medium"-->
+        <!--            android:gravity="center"-->
+        <!--            android:text="Presents you "-->
+        <!--            android:textAppearance="@style/h3" />-->
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="300dp"
+            android:layout_height="150dp"
             android:layout_gravity="center"
-            android:layout_margin="8dp">
+            android:contentDescription="ivLogo"
+            android:elevation="20dp"
+            android:src="@drawable/logo" />
 
 
-            <ImageView
-                android:id="@+id/ivLogo"
-                android:layout_width="300dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center"
-                android:contentDescription="ivLogo"
-                android:src="@drawable/logo"
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardBackgroundColor="@color/material_on_background_emphasis_medium">
 
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.543"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:textColor="@color/black"
+                android:text="@string/parakram"
+                android:textSize="18sp" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager_carousel"
             android:layout_width="match_parent"
-            android:layout_marginHorizontal="8dp"
             android:layout_height="250dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="8dp"
             android:layout_marginTop="16dp" />
 
         <LinearLayout
@@ -61,171 +82,243 @@
             android:orientation="horizontal" />
 
         <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+            android:id="@+id/comingsoon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="32dp"
+            android:alpha="0.8"
             android:padding="8dp"
-            app:cardCornerRadius="8dp"
-            android:alpha="0.8">
+            app:cardCornerRadius="8dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:orientation="vertical"-->
+            <!--                >-->
 
-                <TextView
-                    android:id="@+id/textCounterDown"
-                    style="@style/h2"
-                    android:layout_marginTop="8dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="Time Left"/>
+            <!--                <TextView-->
+            <!--                    android:id="@+id/textCounterDown"-->
+            <!--                    style="@style/h2"-->
+            <!--                    android:layout_marginTop="8dp"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_gravity="center_horizontal"-->
+            <!--                    android:text="Time Left"/>-->
 
-                <TextView
-                    android:id="@+id/finished_id"
-                    style="@style/h2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="Finished"
-                    android:visibility="gone" />
+            <!--                <TextView-->
+            <!--                    android:id="@+id/finished_id"-->
+            <!--                    style="@style/h2"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_gravity="center_horizontal"-->
+            <!--                    android:text="Finished"-->
+            <!--                    android:visibility="gone" />-->
 
 
-                <LinearLayout
-                    android:id="@+id/LinearLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="4dp"
-                    android:baselineAligned="false"
-                    android:orientation="horizontal">
+            <!--                <LinearLayout-->
+            <!--                    android:id="@+id/LinearLayout"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_gravity="center_horizontal"-->
+            <!--                    android:layout_marginTop="4dp"-->
+            <!--                    android:baselineAligned="false"-->
+            <!--                    android:orientation="horizontal">-->
 
-                    <LinearLayout
-                        android:id="@+id/LinearLayout1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_margin="5dp"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="10dp">
+            <!--                    <LinearLayout-->
+            <!--                        android:id="@+id/LinearLayout1"-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:layout_margin="5dp"-->
+            <!--                        android:gravity="center"-->
+            <!--                        android:orientation="vertical"-->
+            <!--                        android:padding="10dp">-->
 
-                        <TextView
-                            android:id="@+id/txtDay"
-                            style="@style/h3"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:text="00"
-                            android:gravity="center"
-                            android:textStyle="bold" />
+            <!--                        <TextView-->
+            <!--                            android:id="@+id/txtDay"-->
+            <!--                            style="@style/h3"-->
+            <!--                            android:layout_width="fill_parent"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:text="00"-->
+            <!--                            android:gravity="center"-->
+            <!--                            android:textStyle="bold" />-->
 
-                        <TextView
-                            android:id="@+id/txt_Day"
-                            style="@style/h5"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:text="Days"
-                            android:textStyle="bold" />
-                    </LinearLayout>
+            <!--                        <TextView-->
+            <!--                            android:id="@+id/txt_Day"-->
+            <!--                            style="@style/h5"-->
+            <!--                            android:layout_width="fill_parent"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:gravity="center_horizontal"-->
+            <!--                            android:text="Days"-->
+            <!--                            android:textStyle="bold" />-->
+            <!--                    </LinearLayout>-->
 
-                    <LinearLayout
-                        android:id="@+id/LinearLayout2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_margin="5dp"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="10dp">
+            <!--                    <LinearLayout-->
+            <!--                        android:id="@+id/LinearLayout2"-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:layout_margin="5dp"-->
+            <!--                        android:gravity="center"-->
+            <!--                        android:orientation="vertical"-->
+            <!--                        android:padding="10dp">-->
 
-                        <TextView
-                            android:id="@+id/txtHour"
-                            style="@style/h3"
-                            android:text="00"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:textStyle="bold" />
+            <!--                        <TextView-->
+            <!--                            android:id="@+id/txtHour"-->
+            <!--                            style="@style/h3"-->
+            <!--                            android:text="00"-->
+            <!--                            android:layout_width="fill_parent"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:gravity="center"-->
+            <!--                            android:textStyle="bold" />-->
 
-                        <TextView
-                            android:id="@+id/txt_Hour"
-                            style="@style/h5"
-                            android:layout_width="fill_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:gravity="center_horizontal"
-                            android:text="Hours"
-                            android:textStyle="bold" />
-                    </LinearLayout>
+            <!--                        <TextView-->
+            <!--                            android:id="@+id/txt_Hour"-->
+            <!--                            style="@style/h5"-->
+            <!--                            android:layout_width="fill_parent"-->
+            <!--                            android:layout_height="0dp"-->
+            <!--                            android:layout_weight="1"-->
+            <!--                            android:gravity="center_horizontal"-->
+            <!--                            android:text="Hours"-->
+            <!--                            android:textStyle="bold" />-->
+            <!--                    </LinearLayout>-->
 
-                    <LinearLayout
+            <!--                    <LinearLayout-->
 
-                        android:id="@+id/LinearLayout3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_margin="5dp"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="10dp">
+            <!--                        android:id="@+id/LinearLayout3"-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:layout_margin="5dp"-->
+            <!--                        android:gravity="center"-->
+            <!--                        android:orientation="vertical"-->
+            <!--                        android:padding="10dp">-->
 
-                        <TextView
-                            android:id="@+id/txtMinute"
-                            style="@style/h3"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="00"
-                            android:textStyle="bold" />
+            <!--                        <TextView-->
+            <!--                            android:id="@+id/txtMinute"-->
+            <!--                            style="@style/h3"-->
+            <!--                            android:layout_width="fill_parent"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:gravity="center"-->
+            <!--                            android:text="00"-->
+            <!--                            android:textStyle="bold" />-->
 
-                        <TextView
-                            style="@style/h5"
-                            android:layout_width="fill_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:gravity="center_horizontal"
-                            android:text="Minutes"
-                            android:textStyle="bold" />
-                    </LinearLayout>
+            <!--                        <TextView-->
+            <!--                            style="@style/h5"-->
+            <!--                            android:layout_width="fill_parent"-->
+            <!--                            android:layout_height="0dp"-->
+            <!--                            android:layout_weight="1"-->
+            <!--                            android:gravity="center_horizontal"-->
+            <!--                            android:text="Minutes"-->
+            <!--                            android:textStyle="bold" />-->
+            <!--                    </LinearLayout>-->
 
-                    <LinearLayout
+            <!--                    <LinearLayout-->
 
-                        android:id="@+id/LinearLayout4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_margin="5dp"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="10dp">
+            <!--                        android:id="@+id/LinearLayout4"-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:layout_margin="5dp"-->
+            <!--                        android:gravity="center"-->
+            <!--                        android:orientation="vertical"-->
+            <!--                        android:padding="10dp">-->
 
-                        <TextView
-                            android:id="@+id/txtSecond"
-                            style="@style/h3"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="00"
-                            android:textStyle="bold" />
+            <!--                        <TextView-->
+            <!--                            android:id="@+id/txtSecond"-->
+            <!--                            style="@style/h3"-->
+            <!--                            android:layout_width="fill_parent"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:gravity="center"-->
+            <!--                            android:text="00"-->
+            <!--                            android:textStyle="bold" />-->
 
-                        <TextView
-                            android:id="@+id/txt_Second"
-                            style="@style/h5"
-                            android:layout_width="fill_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:gravity="center_horizontal"
-                            android:text="Seconds"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                </LinearLayout>
+            <!--                        <TextView-->
+            <!--                            android:id="@+id/txt_Second"-->
+            <!--                            style="@style/h5"-->
+            <!--                            android:layout_width="fill_parent"-->
+            <!--                            android:layout_height="0dp"-->
+            <!--                            android:layout_weight="1"-->
+            <!--                            android:gravity="center_horizontal"-->
+            <!--                            android:text="Seconds"-->
+            <!--                            android:textStyle="bold" />-->
+            <!--                    </LinearLayout>-->
+            <!--                </LinearLayout>-->
 
-            </LinearLayout>
+            <!--            </LinearLayout>-->
 
+            <!--            <com.google.android.material.imageview.ShapeableImageView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="128dp"-->
+            <!--                android:scaleX="2"-->
+            <!--                android:src="@drawable/img_1" />-->
 
         </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="For any queries : "
+                android:textSize="20dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:src="@drawable/ic_call" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:text="1234567890" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:src="@drawable/ic_mail" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:text="123@gamilc.com" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:src="@drawable/ic_location" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10"
+                    android:text="Dhanbad,INDIA" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
 
 
     </LinearLayout>

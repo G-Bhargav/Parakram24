@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:scrollbars="none"
+    tools:context=".fragments.AboutUsFragment">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="8dp"
+            android:alpha="0.9"
+            >
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity = "center"
+                    android:text="ABOUT US"
+                    android:textSize="30dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:text="@string/About_IIT_ISM" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="128dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="128dp"
+            app:shapeAppearance="@style/CornerCut"
+            android:elevation="11dp"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="-32dp"
+            android:src="@drawable/backgroundimage"/>
+
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="10dp"
+            app:cardCornerRadius="8dp"
+            android:layout_margin="8dp"
+            >
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-72dp"
+                android:paddingTop="100dp"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Convener's Message"
+                    android:textSize="30dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:text= "@string/convenersMessage" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+</ScrollView>
