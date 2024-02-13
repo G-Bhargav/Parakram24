@@ -7,15 +7,18 @@
     android:orientation="vertical"
     tools:ignore="hardcodedText">
 
-    <include
-        layout="@layout/content_main"
+    <fragment
+        android:id="@+id/nav_host_fragment_content_main"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:defaultNavHost="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutAppBar" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutAppBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:navGraph="@navigation/nav_activity_main"
+        tools:ignore="FragmentTagUsage" />
 
     <VideoView
         android:id="@+id/videoView"
@@ -46,7 +49,7 @@
             app:cardBackgroundColor="@color/transparent"
             app:cardElevation="0dp">
 
-            <RelativeLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/bg_action_bar"
@@ -64,25 +67,16 @@
 
                 <TextView
                     android:id="@+id/tvTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="30dp"
+                    android:gravity="center"
                     android:textColor="@color/text"
                     android:text="Home"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/btnLogOut"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_alignParentEnd="true"
-                    android:background="@color/transparent"
-                    android:contentDescription="Profile"
-                    android:src="@drawable/logout"
-                    android:visibility="gone" />
 
-            </RelativeLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.cardview.widget.CardView>
 

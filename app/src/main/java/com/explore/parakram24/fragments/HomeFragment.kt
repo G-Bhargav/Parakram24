@@ -1,29 +1,15 @@
 package com.explore.parakram24.fragments
 
-import android.graphics.RenderEffect
-import android.graphics.Shader
+
 import android.os.Build
 import android.os.Bundle
-import android.renderscript.RenderScript
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.annotation.DrawableRes
 import androidx.annotation.RequiresApi
-import androidx.cardview.widget.CardView
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.Card
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.blur
-import androidx.compose.ui.platform.ViewCompositionStrategy
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
@@ -73,7 +59,7 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentHomeBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -106,7 +92,7 @@ class HomeFragment : Fragment() {
 //                        binding.txtSecond.text = "" + String.format("%02d",seconds)
 //                    }
 //                    else {
-//                        countDownSrijanEnd()
+//                        countDownEnd()
 //                        binding.textCounterDown.text = "Parakram'24 is Live"
 //                    }
 //                } catch (e: Exception) {
@@ -120,7 +106,7 @@ class HomeFragment : Fragment() {
 //
 //
 //
-//    fun countDownSrijanEnd(){
+//    fun countDownEnd(){
 //        @Suppress("DEPRECATION") val handler = Handler()
 //        val runnable = object : Runnable {
 //            @SuppressLint("SetTextI18n", "SimpleDateFormat")
@@ -198,7 +184,6 @@ class Transformer : ViewPager2.PageTransformer {
     override fun transformPage(view: View, position: Float) {
         view.apply {
             val pageWidth = width
-            val pageHeight = height
             when {
                 position < -1 -> {
                     view.scrollX = (pageWidth * 0.75 * -1).toInt()

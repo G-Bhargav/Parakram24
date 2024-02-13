@@ -50,7 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            app:cardBackgroundColor="@color/material_on_background_emphasis_medium">
+            app:cardBackgroundColor="@color/primary4"
+            android:alpha="0.8">
 
             <TextView
                 android:layout_width="match_parent"
@@ -58,10 +59,19 @@
                 android:layout_margin="12dp"
                 android:textColor="@color/black"
                 android:text="@string/parakram"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
 
         </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:text="MEMORIES : "
+            android:textSize="20dp"/>
 
 
         <androidx.viewpager2.widget.ViewPager2
@@ -70,7 +80,7 @@
             android:layout_height="250dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginHorizontal="8dp"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="8dp" />
 
         <LinearLayout
             android:id="@+id/dotLayout"
@@ -253,18 +263,30 @@
 
         </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
 
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/primary2"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="64dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:padding="8dp"
+            android:alpha="0.8">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+           >
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="For any queries : "
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -276,6 +298,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
+                    android:contentDescription="call"
                     android:src="@drawable/ic_call" />
 
                 <TextView
@@ -288,13 +311,14 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
+                    android:contentDescription="mail"
                     android:src="@drawable/ic_mail" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="6"
-                    android:text="123@gamilc.com" />
+                    android:text="123@gmail.com" />
 
             </LinearLayout>
 
@@ -307,18 +331,21 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
+                    android:contentDescription="location"
                     android:src="@drawable/ic_location" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="10"
+                    android:layout_weight="15"
                     android:text="Dhanbad,INDIA" />
 
             </LinearLayout>
 
 
         </LinearLayout>
+
+        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
 
 
     </LinearLayout>

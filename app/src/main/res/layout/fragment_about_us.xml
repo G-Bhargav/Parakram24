@@ -55,7 +55,7 @@
             android:scaleType="centerCrop"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="-32dp"
-            android:src="@drawable/backgroundimage"/>
+            android:src="@drawable/img_5"/>
 
         <com.google.android.material.circularreveal.cardview.CircularRevealCardView
             android:layout_width="match_parent"

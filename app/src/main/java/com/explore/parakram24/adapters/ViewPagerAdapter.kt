@@ -12,7 +12,7 @@ class ViewPagerAdapter : RecyclerView.Adapter<ViewPagerAdapter.ViewHolder>() {
     inner class ViewHolder(view : View) : RecyclerView.ViewHolder(view)
     val list = listOf( R.drawable.d2,R.drawable.d3,R.drawable.d4,R.drawable.d5,R.drawable.d6,R.drawable.d1,R.drawable.d7)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val viewHolder = LayoutInflater.from(parent.context).inflate(R.layout.item_corousel,parent,false)
+        val viewHolder = LayoutInflater.from(parent.context).inflate(R.layout.viewpager_layout,parent,false)
         return ViewHolder(viewHolder)
     }
 
@@ -21,7 +21,7 @@ class ViewPagerAdapter : RecyclerView.Adapter<ViewPagerAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val imageView = holder.itemView.findViewById<ImageView>(R.id.image_merchandise)
+        val imageView = holder.itemView.findViewById<ImageView>(R.id.iv_item_viewpager)
         Glide.with(holder.itemView.context)
             .load(list[position])
             .placeholder(R.drawable.progress_animation)

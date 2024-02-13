@@ -10,10 +10,6 @@
         android:name="com.explore.parakram24.fragments.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home" >
-<!--        <action-->
-<!--            android:id="@+id/action_homeFragment_to_profileFragment"-->
-<!--            app:destination="@id/profileFragment"-->
-<!--            app:popUpToInclusive="true" />-->
     </fragment>
 
     <fragment
@@ -22,5 +18,10 @@
         android:label="Aout US"
         tools:layout="@layout/fragment_about_us"/>
 
+    <fragment
+        android:id="@+id/sponsorsFragment"
+        android:name="com.explore.parakram24.fragments.SponsorsFragment"
+        android:label="Sponsors"
+        tools:layout="@layout/rv_item_sponsor"/>
 
 </navigation>
