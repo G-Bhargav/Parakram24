@@ -1,6 +1,7 @@
 package com.explore.parakram24
 
 import android.os.Bundle
+import android.view.View
 import android.widget.VideoView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.homeFragment,
                 R.id.aboutUsFragment,
                 R.id.sponsorsFragment,
+                R.id.eventsFragment,
             ), binding.drawerLayout
         )
 
@@ -45,16 +47,31 @@ class MainActivity : AppCompatActivity() {
         }
         navController =findNavController(R.id.nav_host_fragment_content_main)
         navController.addOnDestinationChangedListener { _, destination, _ ->
+            if(destination.id==R.id.homeFragment){
+
+                binding.appBar.videoView.visibility= View.VISIBLE
+                videoView.start()
+            }
+            else{
+                binding.appBar.videoView.visibility= View.GONE
+                videoView.stopPlayback()
+            }
             when (destination.id) {
-                R.id.homeFragment -> binding.navView.setCheckedItem(R.id.homeFragment)
+                R.id.homeFragment -> {
+                    binding.navView.setCheckedItem(R.id.homeFragment)
+                }
                 R.id.aboutUsFragment -> binding.navView.setCheckedItem(R.id.aboutUsFragment)
                 R.id.sponsorsFragment -> binding.navView.setCheckedItem(R.id.sponsorsFragment)
+                R.id.indiEventFragment -> binding.navView.setCheckedItem(R.id.eventsFragment)
+                R.id.eventsFragment -> binding.navView.setCheckedItem(R.id.eventsFragment)
+                R.id.merchandiseFragment -> binding.navView.setCheckedItem(R.id.merchandiseFragment)
                 else -> binding.navView.setCheckedItem(R.id.homeFragment)
             }
             binding.appBar.tvTitle.text = when (destination.id) {
                 R.id.homeFragment -> "Home"
                 R.id.sponsorsFragment -> "Sponsors"
                 R.id.aboutUsFragment -> "About Us"
+                R.id.eventsFragment -> "Events"
                 else -> "Parakram 24"
             }
         }
@@ -74,6 +91,11 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
         videoView.pause()
     }
+
+//    override fun onBackPressed() {
+//        super.onBackPressed()
+//        if(binding.navView.id==R.id.ev)
+//    }
 
 }
 

@@ -24,4 +24,27 @@
         android:label="Sponsors"
         tools:layout="@layout/rv_item_sponsor"/>
 
+    <fragment
+        android:id="@+id/merchandiseFragment"
+        android:name="com.explore.parakram24.fragments.MerchandiseFragment"
+        android:label="Merchandise"
+        tools:layout="@layout/fragment_merchandise"/>
+
+    <fragment
+        android:id="@+id/eventsFragment"
+        android:name="com.explore.parakram24.fragments.EventsFragment"
+        android:label="Events"
+        tools:layout="@layout/fragment_events">
+        <action
+            android:id="@+id/eventToindiEvent"
+            app:destination="@id/indiEventFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/indiEventFragment"
+        android:name="com.explore.parakram24.fragments.IndividualEventFragment"
+        android:label="Event"
+        tools:layout="@layout/fragment_individual_event"/>
+
 </navigation>

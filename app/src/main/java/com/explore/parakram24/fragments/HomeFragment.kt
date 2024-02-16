@@ -1,6 +1,8 @@
 package com.explore.parakram24.fragments
 
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
@@ -27,6 +30,18 @@ class HomeFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.S)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        binding.eventBrochure.setOnClickListener{
+            browser("https://drive.google.com/file/d/1ST66nTiMW_pwpS4uiiP6Oiq5hqWm4GuB/view?usp=sharing")
+        }
+        binding.noc.setOnClickListener {
+            browser("https://drive.google.com/file/d/1zhVgGgWp5wOWLTPSqcK748Pwh-Z5ipYg/view")
+        }
+
+        binding.rulebook.setOnClickListener {
+            browser("https://drive.google.com/file/d/1ST66nTiMW_pwpS4uiiP6Oiq5hqWm4GuB/view")
+        }
 
        // binding.background.setRenderEffect(RenderEffect.createBlurEffect(10f,10f,Shader.TileMode.MIRROR))
         binding.viewPagerCarousel.adapter = ViewPagerAdapter()
@@ -54,6 +69,15 @@ class HomeFragment : Fragment() {
                 currentPage = position
             }
         })
+    }
+
+    fun browser(url : String){
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        if (browserIntent.resolveActivity(requireActivity().packageManager) != null) {
+            startActivity(browserIntent)
+        } else {
+            Toast.makeText(context, url, Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onCreateView(

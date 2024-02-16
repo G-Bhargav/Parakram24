@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bg"
     tools:ignore="hardcodedText">
 
     <fragment
@@ -24,6 +25,7 @@
         android:id="@+id/videoView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
         android:elevation="-10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -36,7 +38,7 @@
         android:background="@color/transparent"
         android:textAlignment="center"
         app:elevation="0dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -72,6 +74,7 @@
                     android:layout_marginEnd="30dp"
                     android:gravity="center"
                     android:textColor="@color/text"
+                    android:textSize="20dp"
                     android:text="Home"
                     android:textStyle="bold" />
 

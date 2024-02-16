@@ -87,3 +87,4 @@ class SponsorsFragment : Fragment() {
         return binding.root
     }
 }
+
