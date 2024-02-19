@@ -1,11 +1,12 @@
 package com.explore.parakram24.fragments
 
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.explore.parakram24.R
@@ -21,6 +23,8 @@ import com.explore.parakram24.adapters.ViewPagerAdapter
 import com.explore.parakram24.databinding.FragmentHomeBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -31,7 +35,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        countDownStart()
         binding.eventBrochure.setOnClickListener{
             browser("https://drive.google.com/file/d/1ST66nTiMW_pwpS4uiiP6Oiq5hqWm4GuB/view?usp=sharing")
         }
@@ -48,7 +52,7 @@ class HomeFragment : Fragment() {
 
         binding.viewPagerCarousel.setPageTransformer(Transformer())
 
-        addDotsIndicator(7)
+        addDotsIndicator()
         viewLifecycleOwner.lifecycleScope.launch {
             while(true) {
                 delay(2000)
@@ -71,7 +75,7 @@ class HomeFragment : Fragment() {
         })
     }
 
-    fun browser(url : String){
+    private fun browser(url : String){
         val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         if (browserIntent.resolveActivity(requireActivity().packageManager) != null) {
             startActivity(browserIntent)
@@ -90,89 +94,90 @@ class HomeFragment : Fragment() {
 
 
 
-//    private fun countDownStart() {
-//        @Suppress("DEPRECATION") val handler = Handler()
-//        val runnable = object : Runnable {
-//            @SuppressLint("SetTextI18n", "SimpleDateFormat")
-//            override fun run() {
-//                handler.postDelayed(this, 1000)
-//                try {
-//                    val currentDate = Date()
-//                    val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-//                    val futureDate: Date = dateFormat.parse("2024-03-08 00:00:00")!!
-//                    if (!currentDate.after(futureDate)) {
-//                        var diff: Long = (futureDate.time
-//                                - currentDate.time)
-//                        val days = diff / (24 * 60 * 60 * 1000)
-//                        diff -= days * (24 * 60 * 60 * 1000)
-//                        val hours = diff / (60 * 60 * 1000)
-//                        diff -= hours * (60 * 60 * 1000)
-//                        val minutes = diff / (60 * 1000)
-//                        diff -= minutes * (60 * 1000)
-//                        val seconds = diff / 1000
-//                        binding.txtDay.text = "" + String.format("%02d", days)
-//                        binding.txtHour.text = "" + String.format("%02d", hours)
-//                        binding.txtMinute.text = "" + String.format("%02d", minutes)
-//                        binding.txtSecond.text = "" + String.format("%02d",seconds)
-//                    }
-//                    else {
-//                        countDownEnd()
+    private fun countDownStart() {
+        @Suppress("DEPRECATION") val handler = Handler()
+        val runnable = object : Runnable {
+            @SuppressLint("SetTextI18n", "SimpleDateFormat")
+            override fun run() {
+                handler.postDelayed(this, 1000)
+                try {
+                    val currentDate = Date()
+                    val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+                    val futureDate: Date = dateFormat.parse("2024-03-08 00:00:00")!!
+                    if (!currentDate.after(futureDate)) {
+                        var diff: Long = (futureDate.time
+                                - currentDate.time)
+                        val days = diff / (24 * 60 * 60 * 1000)
+                        diff -= days * (24 * 60 * 60 * 1000)
+                        val hours = diff / (60 * 60 * 1000)
+                        diff -= hours * (60 * 60 * 1000)
+                        val minutes = diff / (60 * 1000)
+                        diff -= minutes * (60 * 1000)
+                        val seconds = diff / 1000
+                        binding.txtDay.text = "" + String.format("%02d", days)
+                        binding.txtHour.text = "" + String.format("%02d", hours)
+                        binding.txtMinute.text = "" + String.format("%02d", minutes)
+                        binding.txtSecond.text = "" + String.format("%02d",seconds)
+                    }
+                    else {
+                        countDownEnd()
 //                        binding.textCounterDown.text = "Parakram'24 is Live"
-//                    }
-//                } catch (e: Exception) {
-//                    e.printStackTrace()
-//                }
-//            }
-//        }
-//        handler.postDelayed(runnable, 1 * 1000)
-//
-//    }
-//
-//
-//
-//    fun countDownEnd(){
-//        @Suppress("DEPRECATION") val handler = Handler()
-//        val runnable = object : Runnable {
-//            @SuppressLint("SetTextI18n", "SimpleDateFormat")
-//            override fun run() {
-//                handler.postDelayed(this, 1000)
-//                try {
-//                    val currentDate = Date()
-//                    val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-//                    val futureDate: Date = dateFormat.parse("2024-03-10 00:00:00")!!
-//                    if (!currentDate.after(futureDate)) {
-//
-//                        var diff: Long = (futureDate.time
-//                                - currentDate.time)
-//                        val days = diff / (24 * 60 * 60 * 1000)
-//                        diff -= days * (24 * 60 * 60 * 1000)
-//                        val hours = diff / (60 * 60 * 1000)
-//                        diff -= hours * (60 * 60 * 1000)
-//                        val minutes = diff / (60 * 1000)
-//                        diff -= minutes * (60 * 1000)
-//                        val seconds = diff / 1000
-//                        binding.txtDay.text = "" + String.format("%02d", days)
-//                        binding.txtHour.text = "" + String.format("%02d", hours)
-//                        binding.txtMinute.text = "" + String.format("%02d", minutes)
-//                        binding.txtSecond.text = "" + String.format("%02d",seconds)
-//                    }
-//                    else {
-//                        binding.textCounterDown.text = "Parakram'24 is  Over"
-//                        binding.txtDay.visibility = View.INVISIBLE
-//                        binding.txtHour.visibility = View.INVISIBLE
-//                        binding.txtMinute.visibility = View.INVISIBLE
-//                        binding.txtSecond.visibility = View.INVISIBLE
-//
-//                    }
-//                } catch (e: Exception) {
-//                    e.printStackTrace()
-//                }
-//            }
-//        }
-//        handler.postDelayed(runnable,  1 * 1000)
-//    }
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+        handler.postDelayed(runnable, 1 * 1000)
 
-    private fun addDotsIndicator(size: Int) {
+    }
+
+
+
+    fun countDownEnd(){
+        @Suppress("DEPRECATION") val handler = Handler()
+        val runnable = object : Runnable {
+            @SuppressLint("SetTextI18n", "SimpleDateFormat")
+            override fun run() {
+                handler.postDelayed(this, 1000)
+                try {
+                    val currentDate = Date()
+                    val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+                    val futureDate: Date = dateFormat.parse("2024-03-10 00:00:00")!!
+                    if (!currentDate.after(futureDate)) {
+
+                        var diff: Long = (futureDate.time
+                                - currentDate.time)
+                        val days = diff / (24 * 60 * 60 * 1000)
+                        diff -= days * (24 * 60 * 60 * 1000)
+                        val hours = diff / (60 * 60 * 1000)
+                        diff -= hours * (60 * 60 * 1000)
+                        val minutes = diff / (60 * 1000)
+                        diff -= minutes * (60 * 1000)
+                        val seconds = diff / 1000
+                        binding.txtDay.text = "" + String.format("%02d", days)
+                        binding.txtHour.text = "" + String.format("%02d", hours)
+                        binding.txtMinute.text = "" + String.format("%02d", minutes)
+                        binding.txtSecond.text = "" + String.format("%02d",seconds)
+                    }
+                    else {
+//                        binding.textCounterDown.text = "Parakram'24 is  Over"
+                        binding.txtDay.visibility = View.INVISIBLE
+                        binding.txtHour.visibility = View.INVISIBLE
+                        binding.txtMinute.visibility = View.INVISIBLE
+                        binding.txtSecond.visibility = View.INVISIBLE
+
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+        handler.postDelayed(runnable,  1 * 1000)
+    }
+
+    private fun addDotsIndicator() {
+        val size=7
         val dots = arrayOfNulls<ImageView>(size)
         for (i in 0 until size) {
             dots[i] = ImageView(requireContext())
@@ -206,28 +211,22 @@ class HomeFragment : Fragment() {
 class Transformer : ViewPager2.PageTransformer {
 
     override fun transformPage(view: View, position: Float) {
-        view.apply {
-            val pageWidth = width
-            when {
-                position < -1 -> {
-                    view.scrollX = (pageWidth * 0.75 * -1).toInt()
-                }
-                position <= 1 -> {
-                    if (position < 0) {
-                        view.scrollX = (pageWidth * 0.75 * position).toInt()
-                    } else {
-                        view.scrollX = (pageWidth * 0.75 * position).toInt()
-                    }
-
-                }
-                else -> {
-                    view.scrollX = (pageWidth * 0.75 ).toInt()
-                }
-            }
-            //this.animate().setDuration(5000L)
-            view.pivotX = (if (position < 0) 0 else view.width).toFloat()
-            view.scaleX = if (position < 0) 1f + position else 1f - position
-        }
+        val width = view.width.toFloat()
+        view.rotationX = 0f
+        view.rotationY = 0f
+        view.rotation = 0f
+        view.scaleX = 1f
+        view.scaleY = 1f
+        view.pivotX = 0f
+        view.pivotY = 0f
+        view.translationY = 0f
+        view.translationX = -width * position
+        view.alpha = if (position <= -1f || position >= 1f) 0f else 1f
+        view.pivotX = (if (position < 0) 0 else view.width).toFloat()
+        view.scaleX = if (position < 0) 1f + position else 1f - position
     }
+
+
+
 }
 

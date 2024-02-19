@@ -27,11 +27,6 @@
                     android:icon="@drawable/ic_sponsors"
                     android:title="Sponsors" />
 
-                <item android:id="@+id/aboutUsFragment"
-                    android:icon="@drawable/ic_about_us"
-                    android:title="About Us" />
-
-
 
 
 <!--                <item android:id="@+id/singleEventFragment"-->
@@ -82,30 +77,28 @@
     <!--    </item>-->
 
 
-<!--    <item android:title="Support Section">-->
+    <item android:title="Support Section">
 
-<!--        <menu>-->
+        <menu>
 
-<!--            <group android:checkableBehavior="single">-->
+            <group android:checkableBehavior="single">
 
+                <item android:id="@+id/aboutUsFragment"
+                    android:icon="@drawable/ic_about_us"
+                    android:title="About Us" />
 
-
-<!--                <item android:id="@+id/aboutUsFragment"-->
-<!--                    android:icon="@drawable/ic_about_us"-->
-<!--                    android:title="About Us" />-->
-
-<!--                <item android:id="@+id/coreTeamFragment"-->
-<!--                    android:icon="@drawable/ic_team"-->
-<!--                    android:title="Core Team" />-->
+                <item android:id="@+id/coreTeamFragment"
+                    android:icon="@drawable/ic_team"
+                    android:title="Core Team" />
 
 <!--                <item android:id="@+id/contactFragment"-->
 <!--                    android:icon="@drawable/ic_contact"-->
 <!--                    android:title="Contact Us" />-->
 
-<!--            </group>-->
+            </group>
 
-<!--        </menu>-->
+        </menu>
 
-<!--    </item>-->
+    </item>
 
 </menu>

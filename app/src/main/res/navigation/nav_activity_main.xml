@@ -47,4 +47,10 @@
         android:label="Event"
         tools:layout="@layout/fragment_individual_event"/>
 
+    <fragment
+        android:id="@+id/coreTeamFragment"
+        android:name="com.explore.parakram24.fragments.CoreTeamFragment"
+        android:label="CoreTeam"
+        tools:layout="@layout/fragment_core_team"/>
+
 </navigation>

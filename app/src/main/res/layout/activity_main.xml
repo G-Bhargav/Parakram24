@@ -15,6 +15,53 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+
+<!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+<!--        <com.google.android.material.bottomappbar.BottomAppBar-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/bottomAppBar"-->
+<!--            android:layout_gravity="bottom"-->
+<!--            android:backgroundTint="@color/md_theme_background"-->
+<!--            app:fabCradleMargin="6dp"-->
+<!--            app:fabCradleRoundedCornerRadius="20dp">-->
+
+<!--            <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:id="@+id/bottomNav"-->
+<!--                app:labelVisibilityMode="labeled"-->
+<!--                app:menu="@menu/bottom_menu"-->
+<!--                android:background="@android:color/white"-->
+<!--                app:itemIconTint="@color/md_theme_background_highContrast"-->
+<!--                app:itemTextColor="@color/md_theme_background_highContrast"-->
+<!--                android:theme="@style/ThemeOverlay.AppCompat"-->
+<!--                android:popupTheme="@style/ThemeOverlay.AppCompat"-->
+<!--                />-->
+
+
+<!--        </com.google.android.material.bottomappbar.BottomAppBar>-->
+
+<!--        &lt;!&ndash;            <com.google.android.material.floatingactionbutton.FloatingActionButton&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
+<!--        &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--        &lt;!&ndash;                android:backgroundTint="@color/bluee"&ndash;&gt;-->
+<!--        &lt;!&ndash;                android:src="@drawable/storage_pool"&ndash;&gt;-->
+<!--        &lt;!&ndash;                app:layout_anchor="@+id/bottomAppBar"&ndash;&gt;-->
+<!--        &lt;!&ndash;                app:layout_anchorGravity="center"&ndash;&gt;-->
+<!--        &lt;!&ndash;                app:maxImageSize="40dp"&ndash;&gt;-->
+<!--        &lt;!&ndash;                android:id="@+id/fab"&ndash;&gt;-->
+<!--        &lt;!&ndash;                />&ndash;&gt;-->
+
+<!--    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
+
+
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navView"
         android:layout_width="wrap_content"

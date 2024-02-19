@@ -38,6 +38,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.aboutUsFragment,
                 R.id.sponsorsFragment,
                 R.id.eventsFragment,
+                R.id.indiEventFragment,
+                R.id.coreTeamFragment
             ), binding.drawerLayout
         )
 
@@ -65,6 +67,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.indiEventFragment -> binding.navView.setCheckedItem(R.id.eventsFragment)
                 R.id.eventsFragment -> binding.navView.setCheckedItem(R.id.eventsFragment)
                 R.id.merchandiseFragment -> binding.navView.setCheckedItem(R.id.merchandiseFragment)
+                R.id.coreTeamFragment -> binding.navView.setCheckedItem(R.id.coreTeamFragment)
                 else -> binding.navView.setCheckedItem(R.id.homeFragment)
             }
             binding.appBar.tvTitle.text = when (destination.id) {
@@ -72,13 +75,12 @@ class MainActivity : AppCompatActivity() {
                 R.id.sponsorsFragment -> "Sponsors"
                 R.id.aboutUsFragment -> "About Us"
                 R.id.eventsFragment -> "Events"
+                R.id.coreTeamFragment -> "Core Team"
                 else -> "Parakram 24"
             }
         }
         binding.navView.setupWithNavController(navController)
         binding.navView.setCheckedItem(R.id.homeFragment)
-
-
     }
 
     override fun onResume() {

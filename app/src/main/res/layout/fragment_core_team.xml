@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="100dp"
-    tools:context=".fragments.IndividualEventFragment">
+    tools:context=".fragments.CoreTeamFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/events"
-        android:id="@+id/ev_item_event"/>
+        tools:listitem=""
+        android:id="@+id/rv_coreteam"/>
 
-</ScrollView>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="100dp"/>
+
+</FrameLayout>

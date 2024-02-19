@@ -18,24 +18,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!--        <TextView-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:fontFamily="cursive"-->
-        <!--            android:gravity="center"-->
-        <!--            android:text="IIT(ISM) Dhanbad"-->
-        <!--            android:textAppearance="@style/h1"-->
-        <!--            android:textStyle="bold" />-->
-
-        <!--        <TextView-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginBottom="-30dp"-->
-        <!--            android:fontFamily="sans-serif-condensed-medium"-->
-        <!--            android:gravity="center"-->
-        <!--            android:text="Presents you "-->
-        <!--            android:textAppearance="@style/h3" />-->
-
         <ImageView
             android:id="@+id/ivLogo"
             android:layout_width="300dp"
@@ -99,191 +81,17 @@
             android:orientation="horizontal" />
 
         <com.google.android.material.circularreveal.cardview.CircularRevealCardView
-            android:id="@+id/comingsoon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="32dp"
-            android:alpha="0.8"
-            android:padding="8dp"
-            app:cardCornerRadius="8dp">
-
-            <!--            <LinearLayout-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:orientation="vertical"-->
-            <!--                >-->
-
-            <!--                <TextView-->
-            <!--                    android:id="@+id/textCounterDown"-->
-            <!--                    style="@style/h2"-->
-            <!--                    android:layout_marginTop="8dp"-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_gravity="center_horizontal"-->
-            <!--                    android:text="Time Left"/>-->
-
-            <!--                <TextView-->
-            <!--                    android:id="@+id/finished_id"-->
-            <!--                    style="@style/h2"-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_gravity="center_horizontal"-->
-            <!--                    android:text="Finished"-->
-            <!--                    android:visibility="gone" />-->
-
-
-            <!--                <LinearLayout-->
-            <!--                    android:id="@+id/LinearLayout"-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_gravity="center_horizontal"-->
-            <!--                    android:layout_marginTop="4dp"-->
-            <!--                    android:baselineAligned="false"-->
-            <!--                    android:orientation="horizontal">-->
-
-            <!--                    <LinearLayout-->
-            <!--                        android:id="@+id/LinearLayout1"-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="match_parent"-->
-            <!--                        android:layout_margin="5dp"-->
-            <!--                        android:gravity="center"-->
-            <!--                        android:orientation="vertical"-->
-            <!--                        android:padding="10dp">-->
-
-            <!--                        <TextView-->
-            <!--                            android:id="@+id/txtDay"-->
-            <!--                            style="@style/h3"-->
-            <!--                            android:layout_width="fill_parent"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:text="00"-->
-            <!--                            android:gravity="center"-->
-            <!--                            android:textStyle="bold" />-->
-
-            <!--                        <TextView-->
-            <!--                            android:id="@+id/txt_Day"-->
-            <!--                            style="@style/h5"-->
-            <!--                            android:layout_width="fill_parent"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:gravity="center_horizontal"-->
-            <!--                            android:text="Days"-->
-            <!--                            android:textStyle="bold" />-->
-            <!--                    </LinearLayout>-->
-
-            <!--                    <LinearLayout-->
-            <!--                        android:id="@+id/LinearLayout2"-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="match_parent"-->
-            <!--                        android:layout_margin="5dp"-->
-            <!--                        android:gravity="center"-->
-            <!--                        android:orientation="vertical"-->
-            <!--                        android:padding="10dp">-->
-
-            <!--                        <TextView-->
-            <!--                            android:id="@+id/txtHour"-->
-            <!--                            style="@style/h3"-->
-            <!--                            android:text="00"-->
-            <!--                            android:layout_width="fill_parent"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:gravity="center"-->
-            <!--                            android:textStyle="bold" />-->
-
-            <!--                        <TextView-->
-            <!--                            android:id="@+id/txt_Hour"-->
-            <!--                            style="@style/h5"-->
-            <!--                            android:layout_width="fill_parent"-->
-            <!--                            android:layout_height="0dp"-->
-            <!--                            android:layout_weight="1"-->
-            <!--                            android:gravity="center_horizontal"-->
-            <!--                            android:text="Hours"-->
-            <!--                            android:textStyle="bold" />-->
-            <!--                    </LinearLayout>-->
-
-            <!--                    <LinearLayout-->
-
-            <!--                        android:id="@+id/LinearLayout3"-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="match_parent"-->
-            <!--                        android:layout_margin="5dp"-->
-            <!--                        android:gravity="center"-->
-            <!--                        android:orientation="vertical"-->
-            <!--                        android:padding="10dp">-->
-
-            <!--                        <TextView-->
-            <!--                            android:id="@+id/txtMinute"-->
-            <!--                            style="@style/h3"-->
-            <!--                            android:layout_width="fill_parent"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:gravity="center"-->
-            <!--                            android:text="00"-->
-            <!--                            android:textStyle="bold" />-->
-
-            <!--                        <TextView-->
-            <!--                            style="@style/h5"-->
-            <!--                            android:layout_width="fill_parent"-->
-            <!--                            android:layout_height="0dp"-->
-            <!--                            android:layout_weight="1"-->
-            <!--                            android:gravity="center_horizontal"-->
-            <!--                            android:text="Minutes"-->
-            <!--                            android:textStyle="bold" />-->
-            <!--                    </LinearLayout>-->
-
-            <!--                    <LinearLayout-->
-
-            <!--                        android:id="@+id/LinearLayout4"-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="match_parent"-->
-            <!--                        android:layout_margin="5dp"-->
-            <!--                        android:gravity="center"-->
-            <!--                        android:orientation="vertical"-->
-            <!--                        android:padding="10dp">-->
-
-            <!--                        <TextView-->
-            <!--                            android:id="@+id/txtSecond"-->
-            <!--                            style="@style/h3"-->
-            <!--                            android:layout_width="fill_parent"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:gravity="center"-->
-            <!--                            android:text="00"-->
-            <!--                            android:textStyle="bold" />-->
-
-            <!--                        <TextView-->
-            <!--                            android:id="@+id/txt_Second"-->
-            <!--                            style="@style/h5"-->
-            <!--                            android:layout_width="fill_parent"-->
-            <!--                            android:layout_height="0dp"-->
-            <!--                            android:layout_weight="1"-->
-            <!--                            android:gravity="center_horizontal"-->
-            <!--                            android:text="Seconds"-->
-            <!--                            android:textStyle="bold" />-->
-            <!--                    </LinearLayout>-->
-            <!--                </LinearLayout>-->
-
-            <!--            </LinearLayout>-->
-
-            <!--            <com.google.android.material.imageview.ShapeableImageView-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="128dp"-->
-            <!--                android:scaleX="2"-->
-            <!--                android:src="@drawable/img_1" />-->
-
-        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
-
-        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="64dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
             android:paddingBottom="-32dp"
             app:cardBackgroundColor="#1C100C">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#1C100C"
+                android:paddingBottom="20dp"
                 android:orientation="vertical">
 
                 <ImageView
@@ -311,16 +119,185 @@
                     android:textSize="22sp"
                     android:textColor="#B92F2F"/>
 
+
+                <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+                    android:id="@+id/comingsoon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/transparent"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:alpha="0.8"
+                    android:padding="8dp"
+                    app:cardCornerRadius="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/textCounterDown"-->
+<!--                            style="@style/h2"-->
+<!--                            android:layout_marginTop="8dp"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_gravity="center_horizontal"-->
+<!--                            android:text="Coming Soon "/>-->
+
+                        <TextView
+                            android:id="@+id/finished_id"
+                            style="@style/h2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="Finished"
+                            android:visibility="gone" />
+
+
+                        <LinearLayout
+                            android:id="@+id/LinearLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="4dp"
+                            android:baselineAligned="false"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:id="@+id/LinearLayout1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_margin="5dp"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="10dp">
+
+                                <TextView
+                                    android:id="@+id/txtDay"
+                                    style="@style/h3"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="00"
+                                    android:gravity="center"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/txt_Day"
+                                    style="@style/h5"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_horizontal"
+                                    android:text="Days"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/LinearLayout2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_margin="5dp"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="10dp">
+
+                                <TextView
+                                    android:id="@+id/txtHour"
+                                    style="@style/h3"
+                                    android:text="00"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/txt_Hour"
+                                    style="@style/h5"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center_horizontal"
+                                    android:text="Hours"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+
+                                android:id="@+id/LinearLayout3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_margin="5dp"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="10dp">
+
+                                <TextView
+                                    android:id="@+id/txtMinute"
+                                    style="@style/h3"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="00"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    style="@style/h5"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center_horizontal"
+                                    android:text="Minutes"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+
+                                android:id="@+id/LinearLayout4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_margin="5dp"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="10dp">
+
+                                <TextView
+                                    android:id="@+id/txtSecond"
+                                    style="@style/h3"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="00"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/txt_Second"
+                                    style="@style/h5"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center_horizontal"
+                                    android:text="Seconds"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+
                 <Button
                     android:id="@+id/eventBrochure"
                     android:layout_width="wrap_content"
                     android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
+                    android:padding="10dp"
+                    android:layout_marginBottom="-10dp"
                     android:text="Events Brochure"
                     android:drawableLeft="@drawable/ic_download"
                     android:backgroundTint="#DAD3A5"
-                    android:textSize="16sp"/>
+                    android:textSize="12sp"/>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
@@ -333,12 +310,12 @@
                     android:layout_weight="1"
                     android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
+                    android:padding="10dp"
                     android:layout_marginStart="8dp"
                     android:text="Rulebook"
                     android:backgroundTint="#DAD3A5"
                     android:drawableLeft="@drawable/ic_download"
-                    android:textSize="16sp"/>
+                    android:textSize="12sp"/>
                 <Button
                     android:id="@+id/noc"
                     android:layout_margin="8dp"
@@ -346,11 +323,11 @@
                     android:layout_weight="1"
                     android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
+                    android:padding="10dp"
                     android:text="NOC'24"
                     android:backgroundTint="#DAD3A5"
                     android:drawableLeft="@drawable/ic_download"
-                    android:textSize="16sp"/>
+                    android:textSize="12sp"/>
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
 
