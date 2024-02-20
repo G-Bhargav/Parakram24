@@ -38,14 +38,12 @@ class EventsAdapter(
     }
 
     fun setData(newData: List<EventData>) {
-//        val sizeBefore = eventsList.size
-//        eventsList = newData
-//        val sizeAfter = newData.size
-//        notifyItemRangeChanged(0, min(sizeBefore, sizeAfter))
-//        notifyItemRangeInserted(min(sizeBefore, sizeAfter), max(sizeBefore, sizeAfter) - min(sizeBefore, sizeAfter))
-//        notifyItemRangeRemoved(max(sizeBefore, sizeAfter), max(sizeBefore, sizeAfter) - min(sizeBefore, sizeAfter))
+        val sizeBefore = eventsList.size
         eventsList = newData
-        notifyDataSetChanged()
+        val sizeAfter = newData.size
+        notifyItemRangeChanged(0, min(sizeBefore, sizeAfter))
+        notifyItemRangeInserted(min(sizeBefore, sizeAfter), max(sizeBefore, sizeAfter) - min(sizeBefore, sizeAfter))
+        notifyItemRangeRemoved(max(sizeBefore, sizeAfter), max(sizeBefore, sizeAfter) - min(sizeBefore, sizeAfter))
     }
 
 }

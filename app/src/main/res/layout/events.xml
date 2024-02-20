@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="5dp"
+    android:id="@+id/gameCard"
     android:layout_margin="8dp"
     app:cardCornerRadius="10dp"
     >
@@ -159,6 +160,8 @@
                 android:layout_gravity="center"
                 android:text="Score:"
                 android:textSize="20dp"/>
+
+
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>

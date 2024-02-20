@@ -10,6 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:listitem="@layout/events"
-        android:id="@+id/ev_item_event"/>
+        android:id="@+id/rv_item_event"/>
 
 </ScrollView>
