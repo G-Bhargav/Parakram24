@@ -1,12 +1,14 @@
 package com.explore.parakram24.adapters
 
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
+import android.widget.EditText
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -15,48 +17,47 @@ import com.explore.parakram24.R
 import com.explore.parakram24.fragments.MatchData
 import kotlin.math.max
 import kotlin.math.min
-import androidx.constraintlayout.widget.ConstraintLayout
 
-class IndividualEventAdapter(private var gameslist: List<MatchData>): RecyclerView.Adapter<IndividualEventAdapter.ViewHolder>()  {
+class EditableIndividualEventAdapter(private var etGameslist: List<MatchData>): RecyclerView.Adapter<EditableIndividualEventAdapter.ViewHolder>()  {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val leagueTextView: TextView = view.findViewById(R.id.league)
-        val team1Image: ImageView = view.findViewById(R.id.team1Image)
-        val team1Name: TextView = view.findViewById(R.id.team1name)
-        val buttonFav1: CheckBox = view.findViewById(R.id.button_fav1)
-        val team2Image: ImageView = view.findViewById(R.id.team2Image)
-        val team2Name: TextView = view.findViewById(R.id.team2name)
-        val buttonFav2: CheckBox = view.findViewById(R.id.button_fav2)
-        val dateTextView: TextView = view.findViewById(R.id.date)
-        val timeTextView: TextView = view.findViewById(R.id.time)
-        val venueTextView: TextView = view.findViewById(R.id.venue)
-        val conslay : ConstraintLayout = view.findViewById(R.id.cl_event)
-        val llScore: LinearLayoutCompat = view.findViewById(R.id.ll_score)
-        val scoreA : TextView = view.findViewById(R.id.tv_scoreA)
-        val scoreB : TextView = view.findViewById(R.id.tv_scoreB)
-        val wicketsA : TextView = view.findViewById(R.id.tv_wicketsA)
-        val wicketsB : TextView = view.findViewById(R.id.tv_wicketsB)
+        val leagueTextView: EditText = view.findViewById(R.id.et_league)
+        val team1Image: ImageView = view.findViewById(R.id.et_team1Image)
+        val team1Name: EditText = view.findViewById(R.id.et_team1name)
+        val buttonFav1: CheckBox = view.findViewById(R.id.et_button_fav1)
+        val team2Image: ImageView = view.findViewById(R.id.et_team2Image)
+        val team2Name: EditText = view.findViewById(R.id.et_team2name)
+        val buttonFav2: CheckBox = view.findViewById(R.id.et_button_fav2)
+        val dateTextView: EditText = view.findViewById(R.id.et_date)
+        val timeTextView: EditText = view.findViewById(R.id.et_time)
+        val venueTextView: EditText = view.findViewById(R.id.et_venue)
+        val conslay : ConstraintLayout = view.findViewById(R.id.et_cl_event)
+        val llScore: LinearLayoutCompat = view.findViewById(R.id.et_ll_score)
+        val scoreA : EditText = view.findViewById(R.id.et_tv_scoreA)
+        val scoreB : EditText = view.findViewById(R.id.et_tv_scoreB)
+        val wicketsA : EditText = view.findViewById(R.id.et_tv_wicketsA)
+        val wicketsB : EditText = view.findViewById(R.id.et_tv_wicketsB)
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IndividualEventAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EditableIndividualEventAdapter.ViewHolder {
         val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.events, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.rv_item_editable_event, parent, false)
         return ViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val match = gameslist[position]
+        val match = etGameslist[position]
         holder.apply {
-            leagueTextView.text = match.league
-            team1Name.text = match.teamAname
-            team2Name.text = match.teamBname
-            dateTextView.text = "Date: "+match.date
-            timeTextView.text = "Time: "+match.time
-            venueTextView.text = "Venue: ${match.venue}"
-            scoreA.text = match.score.scoreA.toString()
-            scoreB.text = match.score.scoreB.toString()
-            wicketsA.text = match.score.wicketsA.toString()
-            wicketsB.text = match.score.wicketsB.toString()
+            leagueTextView.text = match.league.toEditable()
+            team1Name.text = match.teamAname.toEditable()
+            team2Name.text = match.teamBname.toEditable()
+            dateTextView.text = ("Date: "+match.date).toEditable()
+            timeTextView.text = ("Time: "+match.time).toEditable()
+            venueTextView.text = ("Venue: ${match.venue}").toEditable()
+            scoreA.text = match.score.scoreA.toString().toEditable()
+            scoreB.text = match.score.scoreB.toString().toEditable()
+            wicketsA.text = match.score.wicketsA.toString().toEditable()
+            wicketsB.text = match.score.wicketsB.toString().toEditable()
 
             if (match.teamAImage != "") {
                 Glide.with(holder.team1Image.context).load(match.teamAImage).apply(
@@ -100,17 +101,26 @@ class IndividualEventAdapter(private var gameslist: List<MatchData>): RecyclerVi
 
     }
 
+    private fun updateIn(toString: String) {
+
+    }
+
     override fun getItemCount(): Int {
-        return gameslist.size
+        return etGameslist.size
     }
 
     fun setData(newData: List<MatchData>) {
-        val sizeBefore = gameslist.size
-        gameslist = newData
+        val sizeBefore = etGameslist.size
+        etGameslist = newData
         val sizeAfter = newData.size
         notifyItemRangeChanged(0, min(sizeBefore, sizeAfter))
         notifyItemRangeInserted(min(sizeBefore, sizeAfter), max(sizeBefore, sizeAfter) - min(sizeBefore, sizeAfter))
         notifyItemRangeRemoved(max(sizeBefore, sizeAfter), max(sizeBefore, sizeAfter) - min(sizeBefore, sizeAfter))
     }
 
+    fun String.toEditable(): Editable =  Editable.Factory.getInstance().newEditable(this)
+}
+
+interface OnFieldUpdateListener {
+    fun onUpdateField(itemPosition: Int, updatedField: String)
 }

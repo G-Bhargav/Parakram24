@@ -1,9 +1,9 @@
 package com.explore.parakram24.fragments
 
+import android.app.Application
 import android.app.Dialog
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,10 +12,13 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.explore.parakram24.R
 import com.explore.parakram24.adapters.IndividualEventAdapter
 import com.explore.parakram24.databinding.FragmentIndividualEventBinding
 import com.explore.parakram24.viewmodel.IndividualEventViewModel
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class IndividualEventFragment : Fragment() {
 
@@ -24,6 +27,7 @@ class IndividualEventFragment : Fragment() {
     private lateinit var viewModel: IndividualEventViewModel
     private lateinit var adapter : IndividualEventAdapter
     private lateinit var dialog: Dialog
+    private lateinit var swipeLayout : SwipeRefreshLayout
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,7 +38,6 @@ class IndividualEventFragment : Fragment() {
             requireActivity(),
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
         )[IndividualEventViewModel::class.java]
-
         binding.rvItemEvent.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
         binding.rvItemEvent.setHasFixedSize(true)
         adapter = IndividualEventAdapter(emptyList())
@@ -70,11 +73,17 @@ class IndividualEventFragment : Fragment() {
             }
         }
 
-        viewModel.gamesData.observe(viewLifecycleOwner) { data ->
-            adapter.setData(data)
+        viewModel.games.observe(viewLifecycleOwner) { data ->
+            data[currentFragment]?.let { adapter.setData(it) }
         }
 
         viewModel.fetchData()
+
+        swipeLayout = binding.swipeLayoutEvents
+        swipeLayout.setOnRefreshListener {
+            viewModel.fetchData()
+            swipeLayout.isRefreshing = false
+        }
 
 
         return binding.root
@@ -107,4 +116,12 @@ data class ScoreData(
     val wicketsA: Int = 0,
     val wicketsB: Int = 0
 )
+
+class MyFirebase : Application(){
+    override fun onCreate() {
+        super.onCreate()
+        Firebase.database.setPersistenceEnabled(true)
+    }
+
+}
 

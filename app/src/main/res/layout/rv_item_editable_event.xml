@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.circularreveal.cardview.CircularRevealCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.circularreveal.cardview.CircularRevealCardView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -13,11 +14,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp"
-        android:id="@+id/cl_event"
+        android:id="@+id/et_cl_event"
         android:focusable="true">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/league"
+        
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_league"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -28,130 +29,118 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/team1Image"
+            android:id="@+id/et_team1Image"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:scaleType="centerCrop"
             android:src="@drawable/backgroundimage"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/league"
+            app:layout_constraintTop_toBottomOf="@+id/et_league"
             app:shapeAppearance="@style/CornerCut" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/team1name"
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_team1name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:text="TEAMA"
             app:layout_constraintHorizontal_bias="0.4"
-            app:layout_constraintEnd_toEndOf="@id/team1Image"
-            app:layout_constraintStart_toStartOf="@id/team1Image"
-            app:layout_constraintTop_toBottomOf="@id/team1Image" />
+            app:layout_constraintEnd_toEndOf="@id/et_team1Image"
+            app:layout_constraintStart_toStartOf="@id/et_team1Image"
+            app:layout_constraintTop_toBottomOf="@id/et_team1Image" />
 
         <com.google.android.material.checkbox.MaterialCheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textOff=""
             android:textOn=""
-            android:id="@+id/button_fav1"
+            android:id="@+id/et_button_fav1"
             android:button="@drawable/fav_button_event"
-            app:layout_constraintBottom_toBottomOf="@+id/team1name"
-            app:layout_constraintTop_toTopOf="@id/team1name"
-            app:layout_constraintEnd_toEndOf="@+id/team1Image"
-            app:layout_constraintStart_toEndOf="@+id/team1name" />
+            app:layout_constraintBottom_toBottomOf="@+id/et_team1name"
+            app:layout_constraintTop_toTopOf="@id/et_team1name"
+            app:layout_constraintEnd_toEndOf="@+id/et_team1Image"
+            app:layout_constraintStart_toEndOf="@+id/et_team1name" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/team2Image"
+            android:id="@+id/et_team2Image"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:src="@drawable/backgroundimage"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/league"
+            app:layout_constraintTop_toBottomOf="@+id/et_league"
             app:shapeAppearance="@style/CornerCut" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/team2name"
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_team2name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintHorizontal_bias="0.4"
             android:text="TEAMB"
             android:layout_margin="4dp"
-            app:layout_constraintEnd_toEndOf="@id/team2Image"
-            app:layout_constraintStart_toStartOf="@id/team2Image"
-            app:layout_constraintTop_toBottomOf="@id/team2Image" />
+            app:layout_constraintEnd_toEndOf="@id/et_team2Image"
+            app:layout_constraintStart_toStartOf="@id/et_team2Image"
+            app:layout_constraintTop_toBottomOf="@id/et_team2Image" />
 
         <com.google.android.material.checkbox.MaterialCheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button_fav2"
+            android:id="@+id/et_button_fav2"
             android:textOff=""
             android:textOn=""
             android:button="@drawable/fav_button_event"
-            app:layout_constraintBottom_toBottomOf="@+id/team2name"
-            app:layout_constraintTop_toTopOf="@id/team2name"
-            app:layout_constraintEnd_toEndOf="@+id/team2Image"
-            app:layout_constraintStart_toEndOf="@+id/team2name" />
+            app:layout_constraintBottom_toBottomOf="@+id/et_team2name"
+            app:layout_constraintTop_toTopOf="@id/et_team2name"
+            app:layout_constraintEnd_toEndOf="@+id/et_team2Image"
+            app:layout_constraintStart_toEndOf="@+id/et_team2name" />
 
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/date"
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Date : 03/02/2024 "
-            app:layout_constraintBottom_toTopOf="@+id/time"
-            app:layout_constraintEnd_toEndOf="@+id/team2Image"
-            app:layout_constraintStart_toStartOf="@id/team1Image"
-            app:layout_constraintTop_toBottomOf="@+id/league" />
+            app:layout_constraintBottom_toTopOf="@+id/et_time"
+            app:layout_constraintEnd_toEndOf="@+id/et_team2Image"
+            app:layout_constraintStart_toStartOf="@id/et_team1Image"
+            app:layout_constraintTop_toBottomOf="@+id/et_league" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/time"
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="TIME : 8:00AM "
-            app:layout_constraintBottom_toTopOf="@+id/vs"
-            app:layout_constraintEnd_toEndOf="@+id/team2Image"
-            app:layout_constraintStart_toStartOf="@+id/team1Image"
-            app:layout_constraintTop_toBottomOf="@+id/date" />
+            app:layout_constraintEnd_toEndOf="@+id/et_team2Image"
+            app:layout_constraintStart_toStartOf="@+id/et_team1Image"
+            app:layout_constraintTop_toBottomOf="@+id/et_date" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/vs"
+  
+
+
+        <androidx.appcompat.widget.AppCompatEditText
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Vs"
-            android:textSize="50dp"
-            app:layout_constraintBottom_toTopOf="@+id/venue"
-            app:layout_constraintEnd_toEndOf="@+id/team2Image"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/date" />
-
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:id="@+id/venue"
+            android:id="@+id/et_venue"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:clickable="true"
             android:focusable="true"
             android:text="VENUE : SAC "
-            app:layout_constraintBottom_toBottomOf="@+id/team2Image"
-            app:layout_constraintTop_toBottomOf="@id/vs"
-            app:layout_constraintStart_toStartOf="@id/team1Image"
-            app:layout_constraintEnd_toEndOf="@id/team2Image"/>
+            app:layout_constraintBottom_toBottomOf="@+id/et_team2Image"
+            app:layout_constraintStart_toStartOf="@id/et_team1Image"
+            app:layout_constraintEnd_toEndOf="@id/et_team2Image"/>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/ll_score"
+            android:id="@+id/et_ll_score"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/team2name"
+            app:layout_constraintTop_toBottomOf="@id/et_team2name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:orientation="vertical"
-            android:visibility="gone"
+            android:visibility="visible"
             tools:layout_editor_absoluteX="8dp">
 
             <TextView
@@ -166,15 +155,15 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:id="@+id/tv_scoreA"
+                    android:id="@+id/et_tv_scoreA"
                     android:text="210"/>
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -182,12 +171,12 @@
                     android:textSize="16dp"
                     android:text="Runs"/>
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:id="@+id/tv_scoreB"
+                    android:id="@+id/et_tv_scoreB"
                     android:text="20"/>
 
 
@@ -198,15 +187,15 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:id="@+id/tv_wicketsA"
+                    android:id="@+id/et_tv_wicketsA"
                     android:text="2/10"/>
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -214,21 +203,23 @@
                     android:textSize="16dp"
                     android:text="Wickets(10)"/>
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:id="@+id/tv_wicketsB"
+                    android:id="@+id/et_tv_wicketsB"
                     android:inputType="numberDecimal"
                     android:text="2"/>
 
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-
-
-
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Update"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

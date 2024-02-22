@@ -6,11 +6,14 @@ import android.widget.VideoView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ReportFragment.Companion.reportFragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.explore.parakram24.databinding.ActivityMainBinding
+import com.explore.parakram24.fragments.currentFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -68,6 +71,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.eventsFragment -> binding.navView.setCheckedItem(R.id.eventsFragment)
                 R.id.merchandiseFragment -> binding.navView.setCheckedItem(R.id.merchandiseFragment)
                 R.id.coreTeamFragment -> binding.navView.setCheckedItem(R.id.coreTeamFragment)
+
+                R.id.EditableIndividualEventFragment -> binding.navView.setCheckedItem(R.id.eventsFragment)
+
                 else -> binding.navView.setCheckedItem(R.id.homeFragment)
             }
             binding.appBar.tvTitle.text = when (destination.id) {
@@ -76,11 +82,22 @@ class MainActivity : AppCompatActivity() {
                 R.id.aboutUsFragment -> "About Us"
                 R.id.eventsFragment -> "Events"
                 R.id.coreTeamFragment -> "Core Team"
+                R.id.indiEventFragment -> currentFragment
+                R.id.EditableIndividualEventFragment -> "Editable $currentFragment"
                 else -> "Parakram 24"
             }
+
+//            val transaction = supportFragmentManager.beginTransaction()
+//            transaction.setCustomAnimations(R.anim.fragment_enter, R.anim.fragment_exit)
+//            val destinationFragment = supportFragmentManager.findFragmentById(destination.id)
+//            transaction.replace(R.id.nav_host_fragment_content_main, destinationFragment!! )
+//            transaction.commit()
         }
         binding.navView.setupWithNavController(navController)
         binding.navView.setCheckedItem(R.id.homeFragment)
+
+
+
     }
 
     override fun onResume() {
@@ -93,11 +110,6 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
         videoView.pause()
     }
-
-//    override fun onBackPressed() {
-//        super.onBackPressed()
-//        if(binding.navView.id==R.id.ev)
-//    }
 
 }
 

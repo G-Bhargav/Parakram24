@@ -17,9 +17,9 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
 import java.io.IOException
 
-class IndividualEventViewModel(application: Application) : AndroidViewModel(application) {
-    private val _games = MutableLiveData<MutableMap<String,List<MatchData>>>()
-    val games : MutableLiveData<MutableMap<String,List<MatchData>>> get() = _games
+class EditableIndividualEventViewModel(application: Application) : AndroidViewModel(application) {
+    private val _etGames = MutableLiveData<MutableMap<String,List<MatchData>>>()
+    val etGames : MutableLiveData<MutableMap<String, List<MatchData>>> get() = _etGames
 
     private val _loading = MutableLiveData<Boolean>()
     val loading : LiveData<Boolean> get() = _loading
@@ -46,15 +46,16 @@ class IndividualEventViewModel(application: Application) : AndroidViewModel(appl
                             }
                             addGameData(currentFragment,newData)
                         }
+                        _loading.value = false
                     }
 
                     override fun onCancelled(error: DatabaseError) {
                         Log.i("error",error.message)
+                        _loading.value = false
                     }
-
                 })
 
-                _loading.value = false
+
             } catch (e: IOException) {
                 Log.d("IndividualEventsViewModel", e.toString())
                 _loading.value = false
@@ -63,12 +64,8 @@ class IndividualEventViewModel(application: Application) : AndroidViewModel(appl
     }
 
     fun addGameData(gameKey: String, list : MutableList<MatchData>) {
-        val currentMap = _games.value ?: mutableMapOf()
+        val currentMap = _etGames.value ?: mutableMapOf()
         currentMap[gameKey] = list
-        _games.value = currentMap
+        _etGames.value = currentMap
     }
 }
-
-data class Games(val game : Game)
-
-data class Game(val matchData: MatchData)
