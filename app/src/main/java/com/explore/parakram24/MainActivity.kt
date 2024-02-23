@@ -82,16 +82,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.aboutUsFragment -> "About Us"
                 R.id.eventsFragment -> "Events"
                 R.id.coreTeamFragment -> "Core Team"
-                R.id.indiEventFragment -> currentFragment
-                R.id.EditableIndividualEventFragment -> "Editable $currentFragment"
+//                R.id.indiEventFragment -> currentFragment
+//                R.id.EditableIndividualEventFragment -> "Editable $currentFragment"
                 else -> "Parakram 24"
             }
 
-//            val transaction = supportFragmentManager.beginTransaction()
-//            transaction.setCustomAnimations(R.anim.fragment_enter, R.anim.fragment_exit)
-//            val destinationFragment = supportFragmentManager.findFragmentById(destination.id)
-//            transaction.replace(R.id.nav_host_fragment_content_main, destinationFragment!! )
-//            transaction.commit()
         }
         binding.navView.setupWithNavController(navController)
         binding.navView.setCheckedItem(R.id.homeFragment)

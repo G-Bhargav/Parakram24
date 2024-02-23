@@ -97,24 +97,25 @@ class IndividualEventFragment : Fragment() {
 }
 
 data class MatchData(
-    val date: String = "",
-    val league : String = "",
-    val likeA: Int = 0,
-    val likeB: Int = 0,
+    val key: String = "",
+    val date: String = "Date",
+    val league : String = "League",
+    val likeA: String = "0",
+    val likeB: String = "0",
     val score: ScoreData = ScoreData(),
     val teamAImage: String = "",
-    val teamAname: String = "",
+    val teamAname: String = "TEAM A",
     val teamBImage: String = "",
-    val teamBname: String = "",
-    val time : String = "",
-    val venue: String = ""
+    val teamBname: String = "TEAM B",
+    val time : String = "Time",
+    val venue: String = "Venue"
 )
 
 data class ScoreData(
-    val scoreA: Int = 0,
-    val scoreB: Int = 0,
-    val wicketsA: Int = 0,
-    val wicketsB: Int = 0
+    val scoreA: String = "0",
+    val scoreB: String = "0",
+    val wicketsA: String = "0",
+    val wicketsB: String = "0"
 )
 
 class MyFirebase : Application(){

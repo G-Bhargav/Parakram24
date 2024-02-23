@@ -1,6 +1,7 @@
 package com.explore.parakram24.adapters
 
 import android.text.Editable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,10 +16,12 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.explore.parakram24.R
 import com.explore.parakram24.fragments.MatchData
+import com.explore.parakram24.fragments.OnFieldUpdateListener
+import com.explore.parakram24.fragments.currentFragment
 import kotlin.math.max
 import kotlin.math.min
 
-class EditableIndividualEventAdapter(private var etGameslist: List<MatchData>): RecyclerView.Adapter<EditableIndividualEventAdapter.ViewHolder>()  {
+class EditableIndividualEventAdapter(private var etGameslist: List<MatchData>,private val listener : OnFieldUpdateListener): RecyclerView.Adapter<EditableIndividualEventAdapter.ViewHolder>()  {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val leagueTextView: EditText = view.findViewById(R.id.et_league)
         val team1Image: ImageView = view.findViewById(R.id.et_team1Image)
@@ -37,6 +40,45 @@ class EditableIndividualEventAdapter(private var etGameslist: List<MatchData>): 
         val wicketsA : EditText = view.findViewById(R.id.et_tv_wicketsA)
         val wicketsB : EditText = view.findViewById(R.id.et_tv_wicketsB)
 
+        private val onFocusChangeListener = View.OnFocusChangeListener { view, hasFocus ->
+            if (!hasFocus) {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val match = etGameslist[position]
+                    val updatedValue = (view as EditText).text.toString()
+                    val fieldUpdated = when (view.id) {
+                        R.id.et_league -> "league"
+                        R.id.et_team1name -> "teamAname"
+                        R.id.et_team2name -> "teamBname"
+                        R.id.et_date -> "date"
+                        R.id.et_time -> "time"
+                        R.id.et_venue -> "venue"
+                        R.id.et_tv_wicketsA -> "score/wicketsA"
+                        R.id.et_tv_wicketsB -> "score/wicketsB"
+                        R.id.et_tv_scoreA -> "score/scoreA"
+                        R.id.et_tv_scoreB -> "score/scoreB"
+                        else -> ""
+                    }
+                    if (fieldUpdated.isNotBlank()) {
+                        listener.onUpdateField(currentFragment, match.key, fieldUpdated, updatedValue)
+                    }
+                }
+            }
+        }
+
+        init {
+            leagueTextView.onFocusChangeListener = onFocusChangeListener
+            team1Name.onFocusChangeListener = onFocusChangeListener
+            team2Name.onFocusChangeListener = onFocusChangeListener
+            wicketsA.onFocusChangeListener = onFocusChangeListener
+            wicketsB.onFocusChangeListener = onFocusChangeListener
+            scoreA.onFocusChangeListener = onFocusChangeListener
+            scoreB.onFocusChangeListener = onFocusChangeListener
+            venueTextView.onFocusChangeListener = onFocusChangeListener
+            timeTextView.onFocusChangeListener = onFocusChangeListener
+            dateTextView.onFocusChangeListener = onFocusChangeListener
+        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EditableIndividualEventAdapter.ViewHolder {
@@ -51,13 +93,13 @@ class EditableIndividualEventAdapter(private var etGameslist: List<MatchData>): 
             leagueTextView.text = match.league.toEditable()
             team1Name.text = match.teamAname.toEditable()
             team2Name.text = match.teamBname.toEditable()
-            dateTextView.text = ("Date: "+match.date).toEditable()
-            timeTextView.text = ("Time: "+match.time).toEditable()
-            venueTextView.text = ("Venue: ${match.venue}").toEditable()
-            scoreA.text = match.score.scoreA.toString().toEditable()
-            scoreB.text = match.score.scoreB.toString().toEditable()
-            wicketsA.text = match.score.wicketsA.toString().toEditable()
-            wicketsB.text = match.score.wicketsB.toString().toEditable()
+            dateTextView.text = match.date.toEditable()
+            timeTextView.text = match.time.toEditable()
+            venueTextView.text = match.venue.toEditable()
+            scoreA.text = match.score.scoreA.toEditable()
+            scoreB.text = match.score.scoreB.toEditable()
+            wicketsA.text = match.score.wicketsA.toEditable()
+            wicketsB.text = match.score.wicketsB.toEditable()
 
             if (match.teamAImage != "") {
                 Glide.with(holder.team1Image.context).load(match.teamAImage).apply(
@@ -101,9 +143,6 @@ class EditableIndividualEventAdapter(private var etGameslist: List<MatchData>): 
 
     }
 
-    private fun updateIn(toString: String) {
-
-    }
 
     override fun getItemCount(): Int {
         return etGameslist.size
@@ -119,8 +158,4 @@ class EditableIndividualEventAdapter(private var etGameslist: List<MatchData>): 
     }
 
     fun String.toEditable(): Editable =  Editable.Factory.getInstance().newEditable(this)
-}
-
-interface OnFieldUpdateListener {
-    fun onUpdateField(itemPosition: Int, updatedField: String)
 }

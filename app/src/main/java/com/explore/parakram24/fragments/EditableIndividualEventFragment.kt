@@ -23,7 +23,7 @@ import com.explore.parakram24.databinding.FragmentIndividualEventBinding
 import com.explore.parakram24.viewmodel.EditableIndividualEventViewModel
 import com.explore.parakram24.viewmodel.IndividualEventViewModel
 
-class EditableIndividualEventFragment : Fragment() {
+class EditableIndividualEventFragment : Fragment(), OnFieldUpdateListener {
 
     private var _binding: FragmentEditableIndividualEventBinding? = null
     private val binding get() = _binding!!
@@ -45,9 +45,8 @@ class EditableIndividualEventFragment : Fragment() {
 
         binding.rvItemEditableEvent.layoutManager = LinearLayoutManager(context)
         binding.rvItemEditableEvent.setHasFixedSize(true)
-        adapter = EditableIndividualEventAdapter(emptyList())
+        adapter = EditableIndividualEventAdapter(emptyList(),this)
         binding.rvItemEditableEvent.adapter = adapter
-
         dialog = Dialog(requireActivity())
         dialog.setContentView(R.layout.loadingcard)
         dialog.setCancelable(false)
@@ -67,6 +66,10 @@ class EditableIndividualEventFragment : Fragment() {
             )
             dialog.window!!.setBackgroundDrawableResource(R.color.transparent)
 
+        }
+
+        binding.etButtonAdd.setOnClickListener{
+            viewModel.addNewGame()
         }
 
 
@@ -94,8 +97,13 @@ class EditableIndividualEventFragment : Fragment() {
         return binding.root
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        currentFragment = "home"
+
+    override fun onUpdateField(fragment : String, cardkey : String , fieldUpdated : String , updatedValue : String) {
+        viewModel.update(fragment,cardkey,fieldUpdated,updatedValue)
     }
+}
+
+
+interface OnFieldUpdateListener {
+    fun onUpdateField(fragment : String, cardkey : String , fieldUpdated : String , updatedValue : String)
 }

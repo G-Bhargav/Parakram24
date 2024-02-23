@@ -27,7 +27,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Parakram24"
-        android:name=".fragments.MyFirebase"
+
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"

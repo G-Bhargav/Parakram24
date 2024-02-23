@@ -23,6 +23,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="FINAL"
+            android:textSize="14dp"
+            android:background="@color/transparent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="parent"
@@ -43,7 +45,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
+            android:background="@color/transparent"
             android:text="TEAMA"
+            android:textSize="14dp"
             app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintEnd_toEndOf="@id/et_team1Image"
             app:layout_constraintStart_toStartOf="@id/et_team1Image"
@@ -78,6 +82,8 @@
             app:layout_constraintHorizontal_bias="0.4"
             android:text="TEAMB"
             android:layout_margin="4dp"
+            android:textSize="14dp"
+            android:background="@color/transparent"
             app:layout_constraintEnd_toEndOf="@id/et_team2Image"
             app:layout_constraintStart_toStartOf="@id/et_team2Image"
             app:layout_constraintTop_toBottomOf="@id/et_team2Image" />
@@ -101,6 +107,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Date : 03/02/2024 "
+            android:background="@color/transparent"
+            android:textSize="14dp"
             app:layout_constraintBottom_toTopOf="@+id/et_time"
             app:layout_constraintEnd_toEndOf="@+id/et_team2Image"
             app:layout_constraintStart_toStartOf="@id/et_team1Image"
@@ -112,11 +120,24 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="TIME : 8:00AM "
+            android:textSize="14dp"
+            android:background="@color/transparent"
             app:layout_constraintEnd_toEndOf="@+id/et_team2Image"
             app:layout_constraintStart_toStartOf="@+id/et_team1Image"
             app:layout_constraintTop_toBottomOf="@+id/et_date" />
 
-  
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_vs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Vs"
+            android:textSize="50dp"
+            app:layout_constraintBottom_toTopOf="@+id/et_venue"
+            app:layout_constraintEnd_toEndOf="@+id/et_team2Image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_time" />
 
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -127,6 +148,8 @@
             android:clickable="true"
             android:focusable="true"
             android:text="VENUE : SAC "
+            android:textSize="14dp"
+            android:background="@color/transparent"
             app:layout_constraintBottom_toBottomOf="@+id/et_team2Image"
             app:layout_constraintStart_toStartOf="@id/et_team1Image"
             app:layout_constraintEnd_toEndOf="@id/et_team2Image"/>
@@ -159,6 +182,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
+                    android:background="@color/transparent"
                     android:gravity="center"
                     android:id="@+id/et_tv_scoreA"
                     android:text="210"/>
@@ -168,6 +192,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:gravity="center"
+                    android:background="@color/transparent"
                     android:textSize="16dp"
                     android:text="Runs"/>
 
@@ -177,6 +202,7 @@
                     android:layout_weight="2"
                     android:gravity="center"
                     android:id="@+id/et_tv_scoreB"
+                    android:background="@color/transparent"
                     android:text="20"/>
 
 
@@ -193,6 +219,7 @@
                     android:layout_weight="2"
                     android:gravity="center"
                     android:id="@+id/et_tv_wicketsA"
+                    android:background="@color/transparent"
                     android:text="2/10"/>
 
                 <androidx.appcompat.widget.AppCompatEditText
@@ -200,6 +227,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:gravity="center"
+                    android:background="@color/transparent"
                     android:textSize="16dp"
                     android:text="Wickets(10)"/>
 
@@ -210,16 +238,12 @@
                     android:gravity="center"
                     android:id="@+id/et_tv_wicketsB"
                     android:inputType="numberDecimal"
+                    android:background="@color/transparent"
                     android:text="2"/>
 
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Update"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
