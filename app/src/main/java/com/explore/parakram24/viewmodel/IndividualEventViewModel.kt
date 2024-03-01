@@ -25,13 +25,13 @@ class IndividualEventViewModel(application: Application) : AndroidViewModel(appl
     val loading : LiveData<Boolean> get() = _loading
     private lateinit var database: DatabaseReference
 
-    fun fetchData(){
+    fun fetchData(current : String){
         viewModelScope.launch {
             try {
                 _loading.value = true
-                Log.i("currentFragment", currentFragment)
+                Log.i("current", current)
                 database = Firebase.database.reference
-                database.child(currentFragment).addValueEventListener(object : ValueEventListener {
+                database.child(current).addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if (snapshot.exists()) {
                             val newData = mutableListOf<MatchData>()
@@ -45,6 +45,9 @@ class IndividualEventViewModel(application: Application) : AndroidViewModel(appl
 
                             }
                             addGameData(currentFragment,newData)
+                        }
+                        else{
+                            addGameData(current,null)
                         }
                     }
 
@@ -62,13 +65,9 @@ class IndividualEventViewModel(application: Application) : AndroidViewModel(appl
         }
     }
 
-    fun addGameData(gameKey: String, list : MutableList<MatchData>) {
+    fun addGameData(gameKey: String, list : MutableList<MatchData>?) {
         val currentMap = _games.value ?: mutableMapOf()
-        currentMap[gameKey] = list
+        currentMap[gameKey] = list ?: listOf()
         _games.value = currentMap
     }
 }
-
-data class Games(val game : Game)
-
-data class Game(val matchData: MatchData)

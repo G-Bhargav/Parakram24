@@ -25,29 +25,30 @@
             android:layout_gravity="center"
             android:contentDescription="ivLogo"
             android:elevation="20dp"
+            android:layout_marginBottom="256dp"
             android:src="@drawable/logo" />
 
 
-        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="16dp"
-            android:alpha="0.9"
-            app:cardBackgroundColor="#DAD3A5">
+<!--        <com.google.android.material.circularreveal.cardview.CircularRevealCardView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="8dp"-->
+<!--            app:cardCornerRadius="16dp"-->
+<!--            android:alpha="0.9"-->
+<!--            app:cardBackgroundColor="#DAD3A5">-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:gravity="center"
-                android:autoSizeTextType="uniform"
-                android:textColor="@color/black"
-                android:text="@string/parakram"
-                android:textSize="16sp" />
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="12dp"-->
+<!--                android:gravity="center"-->
+<!--                android:autoSizeTextType="uniform"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:text="@string/parakram"-->
+<!--                android:textSize="16sp" />-->
 
 
-        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+<!--        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>-->
 
 
         <com.google.android.material.textview.MaterialTextView

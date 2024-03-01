@@ -1,5 +1,6 @@
 package com.explore.parakram24.adapters
 
+import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +18,7 @@ import kotlin.math.max
 import kotlin.math.min
 import androidx.constraintlayout.widget.ConstraintLayout
 
-class IndividualEventAdapter(private var gameslist: List<MatchData>): RecyclerView.Adapter<IndividualEventAdapter.ViewHolder>()  {
+class IndividualEventAdapter(private var gamesList: List<MatchData>, private var current : String): RecyclerView.Adapter<IndividualEventAdapter.ViewHolder>()  {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val leagueTextView: TextView = view.findViewById(R.id.league)
         val team1Image: ImageView = view.findViewById(R.id.team1Image)
@@ -29,13 +30,20 @@ class IndividualEventAdapter(private var gameslist: List<MatchData>): RecyclerVi
         val dateTextView: TextView = view.findViewById(R.id.date)
         val timeTextView: TextView = view.findViewById(R.id.time)
         val venueTextView: TextView = view.findViewById(R.id.venue)
-        val conslay : ConstraintLayout = view.findViewById(R.id.cl_event)
+        val constraintLayout : ConstraintLayout = view.findViewById(R.id.cl_event)
         val llScore: LinearLayoutCompat = view.findViewById(R.id.ll_score)
-        val scoreA : TextView = view.findViewById(R.id.tv_scoreA)
-        val scoreB : TextView = view.findViewById(R.id.tv_scoreB)
-        val wicketsA : TextView = view.findViewById(R.id.tv_wicketsA)
-        val wicketsB : TextView = view.findViewById(R.id.tv_wicketsB)
-
+        val leftField1 : TextView = view.findViewById(R.id.tv_leftField1)
+        val leftField2 : TextView = view.findViewById(R.id.tv_leftField2)
+        val leftField3 : TextView = view.findViewById(R.id.tv_leftField3)
+        val field1 : TextView = view.findViewById(R.id.tv_field1)
+        val field2 : TextView = view.findViewById(R.id.tv_field2)
+        val field3 : TextView = view.findViewById(R.id.tv_field3)
+        val rightField1 : TextView = view.findViewById(R.id.tv_rightField1)
+        val rightField2 : TextView = view.findViewById(R.id.tv_rightField2)
+        val rightField3 : TextView = view.findViewById(R.id.tv_rightField3)
+        val llfield1: LinearLayoutCompat = view.findViewById(R.id.ll_field1)
+        val llfield2: LinearLayoutCompat = view.findViewById(R.id.ll_field2)
+        val llfield3: LinearLayoutCompat = view.findViewById(R.id.ll_field3)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IndividualEventAdapter.ViewHolder {
@@ -45,7 +53,7 @@ class IndividualEventAdapter(private var gameslist: List<MatchData>): RecyclerVi
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val match = gameslist[position]
+        val match = gamesList[position]
         holder.apply {
             leagueTextView.text = match.league
             team1Name.text = match.teamAname
@@ -53,10 +61,31 @@ class IndividualEventAdapter(private var gameslist: List<MatchData>): RecyclerVi
             dateTextView.text = "Date: "+match.date
             timeTextView.text = "Time: "+match.time
             venueTextView.text = "Venue: ${match.venue}"
-            scoreA.text = match.score.scoreA.toString()
-            scoreB.text = match.score.scoreB.toString()
-            wicketsA.text = match.score.wicketsA.toString()
-            wicketsB.text = match.score.wicketsB.toString()
+
+            if(match.score.field1=="0"){
+                llfield1.visibility = View.GONE
+            }
+            else{
+                leftField1.text = match.score.leftField1
+                field1.text = match.score.field1
+                rightField1.text = match.score.rightField1
+            }
+            if(match.score.field2=="0"){
+                llfield2.visibility = View.GONE
+            }
+            else{
+                leftField2.text = match.score.leftField2
+                field2.text = match.score.field2
+                rightField2.text = match.score.rightField2
+            }
+            if(match.score.field3=="0"){
+                llfield3.visibility = View.GONE
+            }
+            else{
+                leftField3.text = match.score.leftField3
+                field3.text = match.score.field3
+                rightField3.text = match.score.rightField3
+            }
 
             if (match.teamAImage != "") {
                 Glide.with(holder.team1Image.context).load(match.teamAImage).apply(
@@ -76,7 +105,7 @@ class IndividualEventAdapter(private var gameslist: List<MatchData>): RecyclerVi
             }
         }
 
-        holder.conslay.setOnClickListener{
+        holder.constraintLayout.setOnClickListener{
             holder.llScore.visibility =
                 if(holder.llScore.visibility == View.GONE){
                     View.VISIBLE
@@ -101,12 +130,12 @@ class IndividualEventAdapter(private var gameslist: List<MatchData>): RecyclerVi
     }
 
     override fun getItemCount(): Int {
-        return gameslist.size
+        return gamesList.size
     }
 
     fun setData(newData: List<MatchData>) {
-        val sizeBefore = gameslist.size
-        gameslist = newData
+        val sizeBefore = gamesList.size
+        gamesList = newData
         val sizeAfter = newData.size
         notifyItemRangeChanged(0, min(sizeBefore, sizeAfter))
         notifyItemRangeInserted(min(sizeBefore, sizeAfter), max(sizeBefore, sizeAfter) - min(sizeBefore, sizeAfter))

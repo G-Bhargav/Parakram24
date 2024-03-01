@@ -43,9 +43,10 @@ class EventsFragment : Fragment() {
         adapter = EventsAdapter(emptyList()){
             Log.i("event name",it)
             //For General Users :
-            //navController.navigate(R.id.eventToindiEvent)
+            val action = EventsFragmentDirections.eventToindiEvent(it)
+            navController.navigate(action)
             //For admin app
-            navController.navigate(R.id.eventToEditableEvent)
+            //navController.navigate(R.id.eventToEditableEvent)
             currentFragment = it
         }
 

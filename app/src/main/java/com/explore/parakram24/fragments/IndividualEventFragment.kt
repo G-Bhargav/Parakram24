@@ -11,6 +11,7 @@ import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.explore.parakram24.R
@@ -19,6 +20,7 @@ import com.explore.parakram24.databinding.FragmentIndividualEventBinding
 import com.explore.parakram24.viewmodel.IndividualEventViewModel
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.gson.annotations.SerializedName
 
 class IndividualEventFragment : Fragment() {
 
@@ -28,6 +30,7 @@ class IndividualEventFragment : Fragment() {
     private lateinit var adapter : IndividualEventAdapter
     private lateinit var dialog: Dialog
     private lateinit var swipeLayout : SwipeRefreshLayout
+    private val args : EventsFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,7 +43,7 @@ class IndividualEventFragment : Fragment() {
         )[IndividualEventViewModel::class.java]
         binding.rvItemEvent.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
         binding.rvItemEvent.setHasFixedSize(true)
-        adapter = IndividualEventAdapter(emptyList())
+        adapter = IndividualEventAdapter(emptyList(),args.fragment)
         binding.rvItemEvent.adapter = adapter
 
         dialog = Dialog(requireActivity())
@@ -77,11 +80,11 @@ class IndividualEventFragment : Fragment() {
             data[currentFragment]?.let { adapter.setData(it) }
         }
 
-        viewModel.fetchData()
+        viewModel.fetchData(args.fragment)
 
         swipeLayout = binding.swipeLayoutEvents
         swipeLayout.setOnRefreshListener {
-            viewModel.fetchData()
+            viewModel.fetchData(args.fragment)
             swipeLayout.isRefreshing = false
         }
 
@@ -92,30 +95,43 @@ class IndividualEventFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         currentFragment = "home"
+        _binding=null
     }
 
 }
 
 data class MatchData(
-    val key: String = "",
-    val date: String = "Date",
-    val league : String = "League",
-    val likeA: String = "0",
-    val likeB: String = "0",
-    val score: ScoreData = ScoreData(),
-    val teamAImage: String = "",
-    val teamAname: String = "TEAM A",
-    val teamBImage: String = "",
-    val teamBname: String = "TEAM B",
-    val time : String = "Time",
-    val venue: String = "Venue"
+    @SerializedName("key") val key: String = "",
+    @SerializedName("date") val date: String = "Date",
+    @SerializedName("league") val league : String = "League",
+    @SerializedName("likeA") val likeA: String = "0",
+    @SerializedName("likeB") val likeB: String = "0",
+    @SerializedName("score") val score: ScoreData = ScoreData(),
+    @SerializedName("teamAImage") val teamAImage: String = "",
+    @SerializedName("teamAname") val teamAname: String = "TEAM A",
+    @SerializedName("teamBImage") val teamBImage: String = "",
+    @SerializedName("teamBname") val teamBname: String = "TEAM B",
+    @SerializedName("time") val time : String = "Time",
+    @SerializedName("venue") val venue: String = "Venue"
 )
 
+//data class ScoreData(
+//    val scoreA: String = "0",
+//    val scoreB: String = "0",
+//    val wicketsA: String = "0",
+//    val wicketsB: String = "0"
+//)
+
 data class ScoreData(
-    val scoreA: String = "0",
-    val scoreB: String = "0",
-    val wicketsA: String = "0",
-    val wicketsB: String = "0"
+    val leftField1 : String = "0",
+    val leftField2 :String = "0",
+    val leftField3: String = "0",
+    val field1 : String = "0",
+    val field2 : String = "0",
+    val field3: String = "0",
+    val rightField1 : String = "0",
+    val rightField2 : String = "0",
+    val rightField3: String = "0",
 )
 
 class MyFirebase : Application(){

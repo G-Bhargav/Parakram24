@@ -34,11 +34,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/et_button_add"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="New Event"
-        android:src="@drawable/ic_write"
+        android:src="@drawable/baseline_add_24"
         android:clickable="true"
         />
 

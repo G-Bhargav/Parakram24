@@ -1,27 +1,26 @@
 package com.explore.parakram24.fragments
 
+import android.app.AlertDialog
 import android.app.Dialog
 import android.graphics.drawable.ColorDrawable
-import androidx.fragment.app.viewModels
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.explore.parakram24.R
 import com.explore.parakram24.adapters.EditableIndividualEventAdapter
-import com.explore.parakram24.adapters.IndividualEventAdapter
 import com.explore.parakram24.databinding.FragmentEditableIndividualEventBinding
-import com.explore.parakram24.databinding.FragmentIndividualEventBinding
 import com.explore.parakram24.viewmodel.EditableIndividualEventViewModel
-import com.explore.parakram24.viewmodel.IndividualEventViewModel
+import kotlinx.coroutines.launch
 
 class EditableIndividualEventFragment : Fragment(), OnFieldUpdateListener {
 
@@ -85,7 +84,10 @@ class EditableIndividualEventFragment : Fragment(), OnFieldUpdateListener {
             data[currentFragment]?.let { adapter.setData(it) }
         }
 
-        viewModel.fetchData()
+        viewLifecycleOwner.lifecycleScope.launch{
+            viewModel.fetchData()
+        }
+
 
         swipeLayout = binding.swipeLayoutEditableEvents
         swipeLayout.setOnRefreshListener {
@@ -98,12 +100,95 @@ class EditableIndividualEventFragment : Fragment(), OnFieldUpdateListener {
     }
 
 
-    override fun onUpdateField(fragment : String, cardkey : String , fieldUpdated : String , updatedValue : String) {
-        viewModel.update(fragment,cardkey,fieldUpdated,updatedValue)
+    override fun onUpdateField(fragment : String, cardKey : String , fieldUpdated : String , updatedValue : String) {
+        viewModel.update(fragment,cardKey,fieldUpdated,updatedValue)
+    }
+
+    override fun openDialog(matchData: MatchData) {
+//        Log.i("infragment",matchData.toString())
+        val alertDialog = LayoutInflater.from(context).inflate(R.layout.update_card, null)
+
+        alertDialog.findViewById<AppCompatEditText>(R.id.uc_et_league).setText(matchData.league)
+        alertDialog.findViewById<AppCompatEditText>(R.id.uc_et_team1name).setText(matchData.teamAname)
+        alertDialog.findViewById<AppCompatEditText>(R.id.uc_et_team2name).setText(matchData.teamBname)
+        alertDialog.findViewById<AppCompatEditText>(R.id.uc_et_date).setText(matchData.date)
+        alertDialog.findViewById<AppCompatEditText>(R.id.uc_et_time).setText(matchData.time)
+        alertDialog.findViewById<AppCompatEditText>(R.id.uc_et_venue).setText(matchData.venue)
+        alertDialog.findViewById<AppCompatEditText>(R.id.uc_tv_field1).setText(matchData.score.field1)
+        alertDialog.findViewById<AppCompatEditText>(R.id.uc_tv_field2).setText(matchData.score.field2)
+        alertDialog.findViewById<AppCompatEditText>(R.id.uc_tv_field3).setText(matchData.score.field3)
+        alertDialog.findViewById<AppCompatEditText>(R.id.uc_tv_leftField1).setText(matchData.score.leftField1)
+        alertDialog.findViewById<AppCompatEditText>(R.id.uc_tv_leftField2).setText(matchData.score.leftField2)
+        alertDialog.findViewById<AppCompatEditText>(R.id.uc_tv_leftField3).setText(matchData.score.leftField3)
+        alertDialog.findViewById<AppCompatEditText>(R.id.uc_tv_rightField1).setText(matchData.score.rightField1)
+        alertDialog.findViewById<AppCompatEditText>(R.id.uc_tv_rightField2).setText(matchData.score.rightField2)
+        alertDialog.findViewById<AppCompatEditText>(R.id.uc_tv_rightField3).setText(matchData.score.rightField3)
+
+        val builder = AlertDialog.Builder(context)
+        builder.setView(alertDialog)
+        builder.setTitle("Update Details")
+
+        builder.setPositiveButton("Update") { _, _ ->
+            val updatedLeague = alertDialog.findViewById<AppCompatEditText>(R.id.uc_et_league).text.toString()
+            val updatedTeam1Name = alertDialog.findViewById<AppCompatEditText>(R.id.uc_et_team1name).text.toString()
+            val updatedTeam2Name = alertDialog.findViewById<AppCompatEditText>(R.id.uc_et_team2name).text.toString()
+            val updatedDate = alertDialog.findViewById<AppCompatEditText>(R.id.uc_et_date).text.toString()
+            val updatedTime = alertDialog.findViewById<AppCompatEditText>(R.id.uc_et_time).text.toString()
+            val updatedVenue = alertDialog.findViewById<AppCompatEditText>(R.id.uc_et_venue).text.toString()
+            val updatedField1 = alertDialog.findViewById<AppCompatEditText>(R.id.uc_tv_field1).text.toString()
+            val updatedField2 = alertDialog.findViewById<AppCompatEditText>(R.id.uc_tv_field2).text.toString()
+            val updatedField3 = alertDialog.findViewById<AppCompatEditText>(R.id.uc_tv_field3).text.toString()
+            val updatedLeftField1 = alertDialog.findViewById<AppCompatEditText>(R.id.uc_tv_leftField1).text.toString()
+            val updatedLeftField2 = alertDialog.findViewById<AppCompatEditText>(R.id.uc_tv_leftField2).text.toString()
+            val updatedLeftField3 = alertDialog.findViewById<AppCompatEditText>(R.id.uc_tv_leftField3).text.toString()
+            val updatedRightField1 = alertDialog.findViewById<AppCompatEditText>(R.id.uc_tv_rightField1).text.toString()
+            val updatedRightField2 = alertDialog.findViewById<AppCompatEditText>(R.id.uc_tv_rightField2).text.toString()
+            val updatedRightField3 = alertDialog.findViewById<AppCompatEditText>(R.id.uc_tv_rightField3).text.toString()
+
+            val newData = MatchData(
+                key= matchData.key,
+                league = updatedLeague,
+                time = updatedTime,
+                date = updatedDate,
+                venue = updatedVenue,
+                teamAname = updatedTeam1Name,
+                teamBname = updatedTeam2Name,
+                score = ScoreData(
+                    field1 = updatedField1,
+                    field2 = updatedField2,
+                    field3 = updatedField3,
+                    leftField1 = updatedLeftField1,
+                    leftField2 = updatedLeftField2,
+                    leftField3 = updatedLeftField3,
+                    rightField1 = updatedRightField1,
+                    rightField2 = updatedRightField2,
+                    rightField3 = updatedRightField3
+                )
+            )
+
+            viewModel.update(currentFragment,newData)
+        }
+
+        builder.setNegativeButton("Delete") { _ , _ ->
+            viewModel.delete(currentFragment,matchData.key)
+        }
+
+        builder.setNeutralButton("cancel"){alertDialog1, _ ->
+            alertDialog1.dismiss()
+        }
+
+        builder.create().show()
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
 
 
 interface OnFieldUpdateListener {
-    fun onUpdateField(fragment : String, cardkey : String , fieldUpdated : String , updatedValue : String)
+    fun onUpdateField(fragment : String, cardKey : String, fieldUpdated : String, updatedValue : String)
+    fun openDialog(matchData : MatchData)
 }

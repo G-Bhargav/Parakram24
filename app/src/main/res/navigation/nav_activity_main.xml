@@ -47,6 +47,9 @@
             app:enterAnim="@anim/fragment_enter"
             app:exitAnim="@anim/fragment_exit"
             />
+        <argument
+            android:name="fragment"
+            app:argType="string" />
 
     </fragment>
 
@@ -54,7 +57,11 @@
         android:id="@+id/indiEventFragment"
         android:name="com.explore.parakram24.fragments.IndividualEventFragment"
         android:label="Event"
-        tools:layout="@layout/fragment_individual_event"/>
+        tools:layout="@layout/fragment_individual_event">
+        <argument
+            android:name="fragment"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/coreTeamFragment"
@@ -67,6 +74,10 @@
         android:id="@+id/EditableIndividualEventFragment"
         android:name="com.explore.parakram24.fragments.EditableIndividualEventFragment"
         android:label="Editable Event"
-        tools:layout="@layout/fragment_editable_individual_event"/>
+        tools:layout="@layout/fragment_editable_individual_event">
+        <argument
+            android:name="fragment"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

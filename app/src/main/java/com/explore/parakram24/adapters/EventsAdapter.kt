@@ -30,7 +30,6 @@ class EventsAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val event = eventsList[position]
-        Log.i("name",event.name)
         holder.eventname.text = event.name
         holder.event.setOnClickListener{
             onItemClick.invoke(event.name)

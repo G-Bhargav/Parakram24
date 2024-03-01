@@ -16,7 +16,28 @@
         android:padding="8dp"
         android:id="@+id/et_cl_event"
         android:focusable="true">
-        
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_write"
+            android:id="@+id/et_btn_update"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toTopOf="@id/et_ll_score"
+            app:layout_constraintStart_toStartOf="@id/et_venue"
+            app:layout_constraintEnd_toEndOf="@id/et_venue"
+            app:layout_constraintTop_toBottomOf="@id/et_venue"
+            />
+
+<!--        <ImageButton-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:src=""-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            android:elevation="1dp"-->
+
+
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_league"
             android:layout_width="wrap_content"
@@ -178,23 +199,46 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/baseline_remove_24"/>
+
                 <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:background="@color/transparent"
                     android:gravity="center"
+                    android:layout_gravity="center"
                     android:id="@+id/et_tv_scoreA"
                     android:text="210"/>
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/baseline_add_24"/>
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:gravity="center"
+                    android:layout_gravity="center"
                     android:background="@color/transparent"
                     android:textSize="16dp"
                     android:text="Runs"/>
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/baseline_remove_24"/>
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="0dp"
@@ -202,8 +246,16 @@
                     android:layout_weight="2"
                     android:gravity="center"
                     android:id="@+id/et_tv_scoreB"
+                    android:layout_gravity="center"
                     android:background="@color/transparent"
                     android:text="20"/>
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/baseline_add_24"/>
 
 
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -213,14 +265,29 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/baseline_remove_24"/>
+
                 <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
+                    android:layout_gravity="center"
                     android:id="@+id/et_tv_wicketsA"
                     android:background="@color/transparent"
                     android:text="2/10"/>
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/baseline_add_24"/>
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="0dp"
@@ -228,8 +295,17 @@
                     android:layout_weight="3"
                     android:gravity="center"
                     android:background="@color/transparent"
+                    android:layout_gravity="center"
                     android:textSize="16dp"
                     android:text="Wickets(10)"/>
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/baseline_remove_24"/>
+
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="0dp"
@@ -238,8 +314,16 @@
                     android:gravity="center"
                     android:id="@+id/et_tv_wicketsB"
                     android:inputType="numberDecimal"
+                    android:layout_gravity="center"
                     android:background="@color/transparent"
                     android:text="2"/>
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/baseline_add_24"/>
 
 
             </androidx.appcompat.widget.LinearLayoutCompat>

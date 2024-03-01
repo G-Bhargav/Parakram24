@@ -21,9 +21,7 @@ import java.util.Date
 class EditableIndividualEventViewModel(application: Application) : AndroidViewModel(application) {
     private val _etGames = MutableLiveData<MutableMap<String,List<MatchData>>>()
     private val _loading = MutableLiveData<Boolean>()
-    private val _event = MutableLiveData<String>()
     val etGames : LiveData<MutableMap<String, List<MatchData>>> get() = _etGames
-    val event : LiveData<String> get() = _event
     val loading : LiveData<Boolean> get() = _loading
     private lateinit var database: DatabaseReference
 
@@ -80,5 +78,13 @@ class EditableIndividualEventViewModel(application: Application) : AndroidViewMo
 
     fun update(fragment : String, cardkey : String , fieldUpdated : String , updatedValue : String){
         database.child(fragment).child(cardkey).child(fieldUpdated).setValue(updatedValue)
+    }
+
+    fun update(fragment: String,matchData: MatchData){
+        database.child(fragment).child(matchData.key).setValue(matchData)
+    }
+
+    fun delete(fragment: String, key : String){
+        database.child(fragment).child(key).setValue(null)
     }
 }
