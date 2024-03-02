@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.explore.parakram24.adapters.EventData
+import com.explore.parakram24.EventData
 import kotlinx.coroutines.launch
 
 class EventsViewModel(application: Application) : AndroidViewModel(application) {

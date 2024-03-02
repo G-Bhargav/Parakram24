@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragments.SponsorsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -12,7 +13,11 @@
         tools:listitem="@layout/rv_item_sponsor"
         android:id="@+id/rvSponsors"/>
 
-</FrameLayout>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="200dp"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
 
 
 <!--src="https://resources.redbull.com/logos/redbullcom/v3/redbullcom-logo.svg"-->

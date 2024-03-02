@@ -3,12 +3,16 @@ package com.explore.parakram24.fragments
 import android.app.Dialog
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.format.Time
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.explore.parakram24.R
@@ -17,6 +21,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.explore.parakram24.adapters.EventsAdapter
 import com.explore.parakram24.databinding.FragmentEventsBinding
 import com.explore.parakram24.viewmodel.EventsViewModel
+import com.google.android.material.appbar.AppBarLayout
+import java.util.Date
+
 class EventsFragment : Fragment() {
 
     private var _binding : FragmentEventsBinding?= null
@@ -30,6 +37,11 @@ class EventsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding= FragmentEventsBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(
             requireActivity(),
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
@@ -38,10 +50,16 @@ class EventsFragment : Fragment() {
         binding.rvEvents.layoutManager= GridLayoutManager(context, 3)
         binding.rvEvents.setHasFixedSize(true)
 
+        val appBar = activity?.findViewById<ConstraintLayout>(R.id.appBar)?.findViewById<AppBarLayout>(R.id.layoutAppBar)
+        val cardView = appBar?.findViewById<CardView>(R.id.cardView)
+        val tvTitle = cardView?.findViewById<TextView>(R.id.tvTitle)
+
 
         val navController = findNavController()
         adapter = EventsAdapter(emptyList()){
-            Log.i("event name",it)
+
+            tvTitle?.text = it
+            Log.i("TItle textww",tvTitle?.text.toString())
             //For General Users :
             val action = EventsFragmentDirections.eventToindiEvent(it)
             navController.navigate(action)
@@ -87,8 +105,11 @@ class EventsFragment : Fragment() {
         }
 
         viewModel.fetchData()
+    }
 
-        return binding.root
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

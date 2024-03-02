@@ -21,6 +21,8 @@ import com.explore.parakram24.adapters.EditableIndividualEventAdapter
 import com.explore.parakram24.databinding.FragmentEditableIndividualEventBinding
 import com.explore.parakram24.viewmodel.EditableIndividualEventViewModel
 import kotlinx.coroutines.launch
+import com.explore.parakram24.MatchData
+import com.explore.parakram24.ScoreData
 
 class EditableIndividualEventFragment : Fragment(), OnFieldUpdateListener {
 

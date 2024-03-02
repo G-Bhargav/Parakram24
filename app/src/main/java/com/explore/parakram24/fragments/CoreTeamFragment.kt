@@ -25,12 +25,9 @@ class CoreTeamFragment : Fragment() {
     private lateinit var viewModel: CoreTeamViewModel
     private lateinit var adapter: CoreteamAdapter
     private lateinit var dialog: Dialog
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentCoreTeamBinding.inflate(layoutInflater)
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(
             requireActivity(),
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
@@ -58,10 +55,7 @@ class CoreTeamFragment : Fragment() {
                 )
             )
             dialog.window!!.setBackgroundDrawableResource(R.color.transparent)
-
         }
-
-
         viewModel.loading.observe(viewLifecycleOwner) { showLoading ->
             if (showLoading) {
                 dialog.show()
@@ -76,6 +70,12 @@ class CoreTeamFragment : Fragment() {
 
         viewModel.fetchData()
 
+    }
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentCoreTeamBinding.inflate(layoutInflater)
         return binding.root
     }
 }

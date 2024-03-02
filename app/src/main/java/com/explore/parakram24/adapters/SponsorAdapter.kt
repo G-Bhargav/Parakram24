@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.explore.parakram24.R
+import com.explore.parakram24.SponsorData
 import kotlin.math.max
 import kotlin.math.min
 
@@ -63,4 +64,3 @@ class SponsorAdapter(
 
 }
 
-data class SponsorData(val image: String, val link: String)

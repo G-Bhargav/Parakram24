@@ -4,10 +4,13 @@ import android.app.Application
 import android.app.Dialog
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -16,11 +19,15 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.explore.parakram24.R
 import com.explore.parakram24.adapters.IndividualEventAdapter
-import com.explore.parakram24.databinding.FragmentIndividualEventBinding
 import com.explore.parakram24.viewmodel.IndividualEventViewModel
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.explore.parakram24.MatchData
+import com.explore.parakram24.databinding.FragmentIndividualEventBinding
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.navigation.NavigationView
 import com.google.gson.annotations.SerializedName
+import java.util.Date
 
 class IndividualEventFragment : Fragment() {
 
@@ -31,12 +38,11 @@ class IndividualEventFragment : Fragment() {
     private lateinit var dialog: Dialog
     private lateinit var swipeLayout : SwipeRefreshLayout
     private val args : EventsFragmentArgs by navArgs()
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentIndividualEventBinding.inflate(layoutInflater)
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        Log.i("currentTime in IndiEventFragment on ViewCreated :", Date().toString())
         viewModel = ViewModelProvider(
             requireActivity(),
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
@@ -69,6 +75,7 @@ class IndividualEventFragment : Fragment() {
 
 
         viewModel.loading.observe(viewLifecycleOwner) { showLoading ->
+            Log.i("currentTime in loading :", Date().toString())
             if (showLoading) {
                 dialog.show()
             } else {
@@ -76,10 +83,11 @@ class IndividualEventFragment : Fragment() {
             }
         }
 
-        viewModel.games.observe(viewLifecycleOwner) { data ->
+        viewModel.games.observe(viewLifecycleOwner) { data  ->
             data[currentFragment]?.let { adapter.setData(it) }
         }
 
+        Log.i("currentTime before fetchdata :", Date().toString())
         viewModel.fetchData(args.fragment)
 
         swipeLayout = binding.swipeLayoutEvents
@@ -88,7 +96,12 @@ class IndividualEventFragment : Fragment() {
             swipeLayout.isRefreshing = false
         }
 
-
+    }
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentIndividualEventBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -100,39 +113,6 @@ class IndividualEventFragment : Fragment() {
 
 }
 
-data class MatchData(
-    @SerializedName("key") val key: String = "",
-    @SerializedName("date") val date: String = "Date",
-    @SerializedName("league") val league : String = "League",
-    @SerializedName("likeA") val likeA: String = "0",
-    @SerializedName("likeB") val likeB: String = "0",
-    @SerializedName("score") val score: ScoreData = ScoreData(),
-    @SerializedName("teamAImage") val teamAImage: String = "",
-    @SerializedName("teamAname") val teamAname: String = "TEAM A",
-    @SerializedName("teamBImage") val teamBImage: String = "",
-    @SerializedName("teamBname") val teamBname: String = "TEAM B",
-    @SerializedName("time") val time : String = "Time",
-    @SerializedName("venue") val venue: String = "Venue"
-)
-
-//data class ScoreData(
-//    val scoreA: String = "0",
-//    val scoreB: String = "0",
-//    val wicketsA: String = "0",
-//    val wicketsB: String = "0"
-//)
-
-data class ScoreData(
-    val leftField1 : String = "0",
-    val leftField2 :String = "0",
-    val leftField3: String = "0",
-    val field1 : String = "0",
-    val field2 : String = "0",
-    val field3: String = "0",
-    val rightField1 : String = "0",
-    val rightField2 : String = "0",
-    val rightField3: String = "0",
-)
 
 class MyFirebase : Application(){
     override fun onCreate() {

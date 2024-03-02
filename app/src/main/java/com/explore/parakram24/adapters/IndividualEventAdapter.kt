@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.explore.parakram24.R
-import com.explore.parakram24.fragments.MatchData
+import com.explore.parakram24.MatchData
 import kotlin.math.max
 import kotlin.math.min
 import androidx.constraintlayout.widget.ConstraintLayout

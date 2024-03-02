@@ -6,33 +6,33 @@
     android:layout_margin="8dp"
     app:cardCornerRadius="16dp"
     android:alpha="0.9"
-    app:cardBackgroundColor="#DAD3A5"
+    app:cardBackgroundColor="@color/white"
     android:layout_height="wrap_content">
 
-
-
-
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/iv_event"
+                android:scaleType="fitCenter"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:src="@drawable/logo"/>
+                android:layout_height="150dp"
+                android:contentDescription="Event Image"
+                android:src="@drawable/img_4"/>
 
             <TextView
                 android:id="@+id/tv_event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="center_horizontal"
+                android:layout_gravity="bottom"
                 android:textColor="@color/black"
                 android:textSize="18dp"
-                android:lines="2"
+                android:maxLines="2"
                 android:text="Game"/>
 
-        </LinearLayout>
+        </FrameLayout>
 
 </com.google.android.material.circularreveal.cardview.CircularRevealCardView>

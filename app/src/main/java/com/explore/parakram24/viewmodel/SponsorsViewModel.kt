@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import androidx.lifecycle.viewModelScope
-import com.explore.parakram24.adapters.SponsorData
+import com.explore.parakram24.SponsorData
 import kotlinx.coroutines.launch
 import java.io.IOException
 import java.io.InputStream

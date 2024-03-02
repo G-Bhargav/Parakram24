@@ -18,13 +18,13 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.explore.parakram24.R
-import com.explore.parakram24.fragments.MatchData
+import com.explore.parakram24.MatchData
 import com.explore.parakram24.fragments.OnFieldUpdateListener
 import com.explore.parakram24.fragments.currentFragment
 import kotlin.math.max
 import kotlin.math.min
 
-class EditableIndividualEventAdapter(private var etGameslist: List<MatchData>,private val listener : OnFieldUpdateListener): RecyclerView.Adapter<EditableIndividualEventAdapter.ViewHolder>()  {
+class EditableIndividualEventAdapter(private var etGameslist: List<MatchData>, private val listener : OnFieldUpdateListener): RecyclerView.Adapter<EditableIndividualEventAdapter.ViewHolder>()  {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 //        val leagueTextView: EditText = view.findViewById(R.id.et_league)
 //        val team1Image: ImageView = view.findViewById(R.id.et_team1Image)

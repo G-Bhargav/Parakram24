@@ -3,6 +3,8 @@ package com.explore.parakram24.fragments
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.RenderEffect
+import android.graphics.Shader
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -20,11 +22,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.explore.parakram24.R
 import com.explore.parakram24.adapters.ViewPagerAdapter
-import com.explore.parakram24.databinding.FragmentHomeBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
+import com.explore.parakram24.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -47,7 +49,7 @@ class HomeFragment : Fragment() {
             browser("https://drive.google.com/file/d/1ST66nTiMW_pwpS4uiiP6Oiq5hqWm4GuB/view")
         }
 
-       // binding.background.setRenderEffect(RenderEffect.createBlurEffect(10f,10f,Shader.TileMode.MIRROR))
+        //binding.background.setRenderEffect(RenderEffect.createBlurEffect(10f,10f, Shader.TileMode.MIRROR))
         binding.viewPagerCarousel.adapter = ViewPagerAdapter()
 
         binding.viewPagerCarousel.setPageTransformer(Transformer())
@@ -66,10 +68,6 @@ class HomeFragment : Fragment() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 updateDots(position)
-            }
-        })
-        binding.viewPagerCarousel.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
                 currentPage = position
             }
         })
@@ -225,8 +223,6 @@ class Transformer : ViewPager2.PageTransformer {
         view.pivotX = (if (position < 0) 0 else view.width).toFloat()
         view.scaleX = if (position < 0) 1f + position else 1f - position
     }
-
-
 
 }
 

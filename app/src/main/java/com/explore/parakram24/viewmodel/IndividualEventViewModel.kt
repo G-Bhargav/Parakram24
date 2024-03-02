@@ -6,7 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.explore.parakram24.fragments.MatchData
+import com.explore.parakram24.MatchData
 import com.explore.parakram24.fragments.currentFragment
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -16,6 +16,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
 import java.io.IOException
+import java.util.Date
 
 class IndividualEventViewModel(application: Application) : AndroidViewModel(application) {
     private val _games = MutableLiveData<MutableMap<String,List<MatchData>>>()
@@ -28,6 +29,7 @@ class IndividualEventViewModel(application: Application) : AndroidViewModel(appl
     fun fetchData(current : String){
         viewModelScope.launch {
             try {
+                Log.i("currentTime in fetch data :", Date().toString())
                 _loading.value = true
                 Log.i("current", current)
                 database = Firebase.database.reference
@@ -45,9 +47,6 @@ class IndividualEventViewModel(application: Application) : AndroidViewModel(appl
 
                             }
                             addGameData(currentFragment,newData)
-                        }
-                        else{
-                            addGameData(current,null)
                         }
                     }
 

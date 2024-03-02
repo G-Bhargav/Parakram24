@@ -6,7 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.explore.parakram24.fragments.MatchData
+import com.explore.parakram24.MatchData
 import com.explore.parakram24.fragments.currentFragment
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

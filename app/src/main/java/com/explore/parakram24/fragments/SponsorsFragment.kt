@@ -13,6 +13,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.explore.parakram24.R
 import com.explore.parakram24.adapters.SponsorAdapter
@@ -36,7 +37,7 @@ class SponsorsFragment : Fragment() {
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
         )[SponsorsViewModel::class.java]
 
-        binding.rvSponsors.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+        binding.rvSponsors.layoutManager = GridLayoutManager(context,2)
         binding.rvSponsors.setHasFixedSize(true)
         adapter = SponsorAdapter(emptyList()) { url ->
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))

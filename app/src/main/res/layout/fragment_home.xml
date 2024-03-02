@@ -26,8 +26,8 @@
             android:contentDescription="ivLogo"
             android:elevation="20dp"
             android:layout_marginBottom="256dp"
+            android:background="@drawable/card_background"
             android:src="@drawable/logo" />
-
 
 <!--        <com.google.android.material.circularreveal.cardview.CircularRevealCardView-->
 <!--            android:layout_width="wrap_content"-->
@@ -51,17 +51,17 @@
 <!--        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>-->
 
 
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="8dp"
-            android:layout_gravity="center"
-            android:text="Memories"
-            android:padding="8dp"
-            android:textColor="@color/white"
-            android:background="@drawable/bg_action_bar"
-            android:textSize="24dp"/>
+<!--        <com.google.android.material.textview.MaterialTextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginStart="8dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:text="Memories"-->
+<!--            android:padding="8dp"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:background="@drawable/bg_action_bar"-->
+<!--            android:textSize="24dp"/>-->
 
 
         <androidx.viewpager2.widget.ViewPager2
@@ -137,15 +137,6 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         >
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/textCounterDown"-->
-<!--                            style="@style/h2"-->
-<!--                            android:layout_marginTop="8dp"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_gravity="center_horizontal"-->
-<!--                            android:text="Coming Soon "/>-->
 
                         <TextView
                             android:id="@+id/finished_id"
@@ -297,7 +288,7 @@
                     android:layout_marginBottom="-10dp"
                     android:text="Events Brochure"
                     android:drawableLeft="@drawable/ic_download"
-                    android:backgroundTint="#DAD3A5"
+                    android:backgroundTint="#DAAD3F"
                     android:textSize="12sp"/>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -314,7 +305,7 @@
                     android:padding="10dp"
                     android:layout_marginStart="8dp"
                     android:text="Rulebook"
-                    android:backgroundTint="#DAD3A5"
+                    android:backgroundTint="#DAAD3F"
                     android:drawableLeft="@drawable/ic_download"
                     android:textSize="12sp"/>
                 <Button
@@ -326,10 +317,14 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:text="NOC'24"
-                    android:backgroundTint="#DAD3A5"
+                    android:backgroundTint="#DAAD3F"
                     android:drawableLeft="@drawable/ic_download"
                     android:textSize="12sp"/>
                 </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="16dp"/>
 
 
             </LinearLayout>

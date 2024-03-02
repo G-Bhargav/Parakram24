@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/bg"
+    android:id="@+id/appBarConstraintLayout"
     tools:ignore="hardcodedText">
 
     <fragment
@@ -47,6 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:padding="2dp"
+            android:id="@+id/cardView"
             app:cardBackgroundColor="@color/transparent"
             app:cardElevation="0dp">
 

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.explore.parakram24.CoreTeamData
 import com.explore.parakram24.R
 import kotlin.math.max
 import kotlin.math.min
@@ -62,4 +63,3 @@ class CoreteamAdapter(
 
 }
 
-data class CoreTeamData( val name : String, val position : String,val team : String,val image : String)

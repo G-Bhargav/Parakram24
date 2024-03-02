@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:scrollbars="none"
+    android:padding="8dp"
     tools:context=".fragments.EventsFragment">
 
     <androidx.recyclerview.widget.RecyclerView

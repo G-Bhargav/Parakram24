@@ -41,6 +41,13 @@
                 android:textColor="@color/primary"
                 android:textSize="20sp" />
 
+<!--            <com.airbnb.lottie.LottieAnimationView-->
+<!--                android:layout_width="32dp"-->
+<!--                android:layout_height="32dp"-->
+<!--                app:lottie_fileName="@raw/loading_new"-->
+<!--                app:lottie_autoPlay="true"-->
+<!--                app:lottie_loop="true"/>-->
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

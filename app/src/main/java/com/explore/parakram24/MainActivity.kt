@@ -7,12 +7,15 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.findFragment
 import androidx.lifecycle.ReportFragment.Companion.reportFragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.explore.parakram24.databinding.ActivityMainBinding
+import com.explore.parakram24.fragments.EventsFragmentArgs
 import com.explore.parakram24.fragments.currentFragment
 
 class MainActivity : AppCompatActivity() {
@@ -67,11 +70,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.aboutUsFragment -> binding.navView.setCheckedItem(R.id.aboutUsFragment)
                 R.id.sponsorsFragment -> binding.navView.setCheckedItem(R.id.sponsorsFragment)
-                R.id.indiEventFragment -> binding.navView.setCheckedItem(R.id.eventsFragment)
                 R.id.eventsFragment -> binding.navView.setCheckedItem(R.id.eventsFragment)
                 R.id.merchandiseFragment -> binding.navView.setCheckedItem(R.id.merchandiseFragment)
                 R.id.coreTeamFragment -> binding.navView.setCheckedItem(R.id.coreTeamFragment)
-
+                R.id.indiEventFragment -> binding.navView.setCheckedItem(R.id.eventsFragment)
                 R.id.EditableIndividualEventFragment -> binding.navView.setCheckedItem(R.id.eventsFragment)
 
                 else -> binding.navView.setCheckedItem(R.id.homeFragment)
@@ -82,8 +84,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.aboutUsFragment -> "About Us"
                 R.id.eventsFragment -> "Events"
                 R.id.coreTeamFragment -> "Core Team"
-//                R.id.indiEventFragment -> currentFragment
-//                R.id.EditableIndividualEventFragment -> "Editable $currentFragment"
                 else -> "Parakram 24"
             }
 
