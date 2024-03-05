@@ -14,23 +14,30 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.io.IOException
 import java.util.Date
 
 class IndividualEventViewModel(application: Application) : AndroidViewModel(application) {
-    private val _games = MutableLiveData<MutableMap<String,List<MatchData>>>()
-    val games : MutableLiveData<MutableMap<String,List<MatchData>>> get() = _games
+    private val _games = MutableLiveData<MutableMap<String, List<MatchData>>>()
+    val games: LiveData<MutableMap<String, List<MatchData>>> get() = _games
 
-    private val _loading = MutableLiveData<Boolean>()
-    val loading : LiveData<Boolean> get() = _loading
+    private val _eventLoading = MutableLiveData<Boolean>()
+    val eventLoading: LiveData<Boolean> get() = _eventLoading
     private lateinit var database: DatabaseReference
 
-    fun fetchData(current : String){
+    private val _data = MutableLiveData<Boolean>()
+    val data: LiveData<Boolean> get() = _data
+
+
+
+    fun fetchData(current: String) {
+        _eventLoading.value = true
+        _data.value = true
         viewModelScope.launch {
             try {
                 Log.i("currentTime in fetch data :", Date().toString())
-                _loading.value = true
                 Log.i("current", current)
                 database = Firebase.database.reference
                 database.child(current).addValueEventListener(object : ValueEventListener {
@@ -41,30 +48,46 @@ class IndividualEventViewModel(application: Application) : AndroidViewModel(appl
                                 try {
                                     val data = k.getValue(MatchData::class.java) ?: MatchData()
                                     newData.add(data)
-                                }catch (e :Error  ){
-                                    Log.i("error",e.message.toString())
+                                } catch (e: Error) {
+                                    Log.i("error", e.message.toString())
                                 }
-
                             }
-                            addGameData(currentFragment,newData)
+                            viewModelScope.launch {
+                                delay(500) // Delay for 500 milliseconds
+                                _eventLoading.value = false
+                            }
+                            addGameData(currentFragment, newData)
+                            _data.value = true //i want to update this only after 500 millis delay
+                        }
+                        else{
+                            viewModelScope.launch {
+                                delay(500) // Delay for 500 milliseconds
+                                _eventLoading.value = false
+                            }
+                            _data.value = false
                         }
                     }
 
                     override fun onCancelled(error: DatabaseError) {
-                        Log.i("error",error.message)
+                        Log.i("error", error.message)
+                        viewModelScope.launch {
+                            delay(500) // Delay for 500 milliseconds
+                            _eventLoading.value = false
+                        }
+                        _data.value = false
                     }
 
                 })
 
-                _loading.value = false
+
             } catch (e: IOException) {
                 Log.d("IndividualEventsViewModel", e.toString())
-                _loading.value = false
+                _eventLoading.value = false
             }
         }
     }
 
-    fun addGameData(gameKey: String, list : MutableList<MatchData>?) {
+    fun addGameData(gameKey: String, list: MutableList<MatchData>?) {
         val currentMap = _games.value ?: mutableMapOf()
         currentMap[gameKey] = list ?: listOf()
         _games.value = currentMap

@@ -11,10 +11,8 @@ import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.explore.parakram24.R
 import com.explore.parakram24.adapters.CoreteamAdapter
-import com.explore.parakram24.adapters.EventsAdapter
 import com.explore.parakram24.databinding.FragmentCoreTeamBinding
 import com.explore.parakram24.viewmodel.CoreTeamViewModel
 
@@ -33,10 +31,10 @@ class CoreTeamFragment : Fragment() {
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
         )[CoreTeamViewModel::class.java]
 
-        binding.rvCoreteam.layoutManager = GridLayoutManager(context,2)
-        binding.rvCoreteam.setHasFixedSize(true)
+        binding.rvCoreTeam.layoutManager = GridLayoutManager(context,2)
+        binding.rvCoreTeam.setHasFixedSize(true)
         adapter = CoreteamAdapter(emptyList())
-        binding.rvCoreteam.adapter = adapter
+        binding.rvCoreTeam.adapter = adapter
         dialog = Dialog(requireActivity())
         dialog.setContentView(R.layout.loadingcard)
         dialog.setCancelable(false)

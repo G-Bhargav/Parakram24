@@ -1,5 +1,6 @@
 package com.explore.parakram24.fragments
 
+import android.app.AlertDialog
 import android.app.Application
 import android.app.Dialog
 import android.graphics.drawable.ColorDrawable
@@ -10,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -22,11 +24,8 @@ import com.explore.parakram24.adapters.IndividualEventAdapter
 import com.explore.parakram24.viewmodel.IndividualEventViewModel
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.explore.parakram24.MatchData
 import com.explore.parakram24.databinding.FragmentIndividualEventBinding
 import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.navigation.NavigationView
-import com.google.gson.annotations.SerializedName
 import java.util.Date
 
 class IndividualEventFragment : Fragment() {
@@ -35,14 +34,14 @@ class IndividualEventFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var viewModel: IndividualEventViewModel
     private lateinit var adapter : IndividualEventAdapter
-    private lateinit var dialog: Dialog
     private lateinit var swipeLayout : SwipeRefreshLayout
+    private lateinit var dialog : Dialog
     private val args : EventsFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Log.i("currentTime in IndiEventFragment on ViewCreated :", Date().toString())
+        Log.i("currentTime in IndividualEventFragment on ViewCreated :", Date().toString())
         viewModel = ViewModelProvider(
             requireActivity(),
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
@@ -52,6 +51,48 @@ class IndividualEventFragment : Fragment() {
         adapter = IndividualEventAdapter(emptyList(),args.fragment)
         binding.rvItemEvent.adapter = adapter
 
+        viewModel.eventLoading.observe(viewLifecycleOwner) { showLoading ->
+            Log.i("loading :", showLoading.toString())
+            if (showLoading) {
+                dialog.show()
+            } else {
+                dialog.cancel()
+            }
+        }
+
+        viewModel.data.observe(viewLifecycleOwner){isData ->
+            Log.i("isdata",isData.toString())
+            if(isData){
+                binding.ivEventComingSoon.visibility= View.GONE
+            }
+            else{
+                binding.ivEventComingSoon.visibility = View.VISIBLE
+            }
+        }
+
+        viewModel.games.observe(viewLifecycleOwner) { data  ->
+            data[currentFragment]?.let { adapter.setData(it) }
+        }
+
+        viewModel.fetchData(args.fragment)
+        Log.i("args",args.fragment)
+        val appBar = activity?.findViewById<ConstraintLayout>(R.id.appBar)?.findViewById<AppBarLayout>(R.id.layoutAppBar)
+        val cardView = appBar?.findViewById<CardView>(R.id.cardView)
+        val tvTitle = cardView?.findViewById<TextView>(R.id.tvTitle)
+        tvTitle?.text = args.fragment
+
+        swipeLayout = binding.swipeLayoutEvents
+        swipeLayout.setOnRefreshListener {
+            viewModel.fetchData(args.fragment)
+            swipeLayout.isRefreshing = false
+        }
+
+    }
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentIndividualEventBinding.inflate(layoutInflater)
         dialog = Dialog(requireActivity())
         dialog.setContentView(R.layout.loadingcard)
         dialog.setCancelable(false)
@@ -72,36 +113,6 @@ class IndividualEventFragment : Fragment() {
             dialog.window!!.setBackgroundDrawableResource(R.color.transparent)
 
         }
-
-
-        viewModel.loading.observe(viewLifecycleOwner) { showLoading ->
-            Log.i("currentTime in loading :", Date().toString())
-            if (showLoading) {
-                dialog.show()
-            } else {
-                dialog.dismiss()
-            }
-        }
-
-        viewModel.games.observe(viewLifecycleOwner) { data  ->
-            data[currentFragment]?.let { adapter.setData(it) }
-        }
-
-        Log.i("currentTime before fetchdata :", Date().toString())
-        viewModel.fetchData(args.fragment)
-
-        swipeLayout = binding.swipeLayoutEvents
-        swipeLayout.setOnRefreshListener {
-            viewModel.fetchData(args.fragment)
-            swipeLayout.isRefreshing = false
-        }
-
-    }
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentIndividualEventBinding.inflate(layoutInflater)
         return binding.root
     }
 

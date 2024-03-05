@@ -3,7 +3,6 @@ package com.explore.parakram24.fragments
 import android.app.Dialog
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.text.format.Time
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,7 +21,6 @@ import com.explore.parakram24.adapters.EventsAdapter
 import com.explore.parakram24.databinding.FragmentEventsBinding
 import com.explore.parakram24.viewmodel.EventsViewModel
 import com.google.android.material.appbar.AppBarLayout
-import java.util.Date
 
 class EventsFragment : Fragment() {
 
@@ -50,21 +48,14 @@ class EventsFragment : Fragment() {
         binding.rvEvents.layoutManager= GridLayoutManager(context, 3)
         binding.rvEvents.setHasFixedSize(true)
 
-        val appBar = activity?.findViewById<ConstraintLayout>(R.id.appBar)?.findViewById<AppBarLayout>(R.id.layoutAppBar)
-        val cardView = appBar?.findViewById<CardView>(R.id.cardView)
-        val tvTitle = cardView?.findViewById<TextView>(R.id.tvTitle)
-
-
         val navController = findNavController()
         adapter = EventsAdapter(emptyList()){
-
-            tvTitle?.text = it
-            Log.i("TItle textww",tvTitle?.text.toString())
             //For General Users :
-            val action = EventsFragmentDirections.eventToindiEvent(it)
-            navController.navigate(action)
+//            val action = EventsFragmentDirections.eventToindiEvent(it)
+//            navController.navigate(action)
             //For admin app
-            //navController.navigate(R.id.eventToEditableEvent)
+            val action = EventsFragmentDirections.eventToEditableEvent(it)
+            navController.navigate(action)
             currentFragment = it
         }
 

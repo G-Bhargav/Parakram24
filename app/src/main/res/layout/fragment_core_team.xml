@@ -7,13 +7,14 @@
     tools:context=".fragments.CoreTeamFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_coreTeam"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem=""
-        android:id="@+id/rv_coreteam"/>
+        android:layoutAnimation="@anim/layout_anim"
+        tools:listitem="@layout/rv_item_coreteam" />
 
     <View
         android:layout_width="0dp"
-        android:layout_height="100dp"/>
+        android:layout_height="100dp" />
 
 </FrameLayout>

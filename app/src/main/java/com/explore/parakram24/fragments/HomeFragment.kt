@@ -3,8 +3,6 @@ package com.explore.parakram24.fragments
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.RenderEffect
-import android.graphics.Shader
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -39,7 +37,7 @@ class HomeFragment : Fragment() {
 
         countDownStart()
         binding.eventBrochure.setOnClickListener{
-            browser("https://drive.google.com/file/d/1ST66nTiMW_pwpS4uiiP6Oiq5hqWm4GuB/view?usp=sharing")
+            browser("https://drive.google.com/file/d/1m-R-CRPPjHHP30zZTs293OvfZKwFh9dC/view")
         }
         binding.noc.setOnClickListener {
             browser("https://drive.google.com/file/d/1zhVgGgWp5wOWLTPSqcK748Pwh-Z5ipYg/view")

@@ -5,18 +5,16 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.explore.parakram24.CoreTeamData
-import com.explore.parakram24.SponsorData
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
 import java.io.IOException
 import java.io.InputStream
 
 class CoreTeamViewModel(application: Application) : AndroidViewModel(application) {
-    private val _coreteamData = MutableLiveData<List<CoreTeamData>>()
-    val coreTeamData : LiveData<List<CoreTeamData>> get() = _coreteamData
+    private val _coreTeamData = MutableLiveData<List<CoreTeamData>>()
+    val coreTeamData : LiveData<List<CoreTeamData>> get() = _coreTeamData
 
     private val _loading = MutableLiveData<Boolean>()
     val loading : LiveData<Boolean> get() = _loading
@@ -27,7 +25,7 @@ class CoreTeamViewModel(application: Application) : AndroidViewModel(application
                 _loading.value = true
 
                 val assetManager = getApplication<Application>().assets
-                val inputStream: InputStream = assetManager.open("coreteam.json")
+                val inputStream: InputStream = assetManager.open("coreTeamJSON.json")
                 val size = inputStream.available()
                 val buffer = ByteArray(size)
                 inputStream.read(buffer)
@@ -35,7 +33,7 @@ class CoreTeamViewModel(application: Application) : AndroidViewModel(application
                 val json = String(buffer, Charsets.UTF_8)
                 val gson = Gson()
                 val coreTeamData = gson.fromJson(json, Array<CoreTeamData>::class.java)
-                _coreteamData.value = coreTeamData.toList()
+                _coreTeamData.value = coreTeamData.toList()
                 _loading.value = false
             } catch (e: IOException) {
                 Log.d("CoreTeamViewModel", e.toString())

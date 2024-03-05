@@ -66,8 +66,8 @@ class EditableIndividualEventViewModel(application: Application) : AndroidViewMo
 
     fun addNewGame(){
         val currentDate = Date()
-        val newmatchdata = MatchData(key = currentDate.toString())
-        database.child(currentFragment).child(currentDate.toString()).setValue(newmatchdata)
+        val newMatchData = MatchData(key = currentDate.toString())
+        database.child(currentFragment).child(currentDate.toString()).setValue(newMatchData)
     }
 
     fun addGameData(gameKey: String, list : MutableList<MatchData>) {
@@ -76,8 +76,8 @@ class EditableIndividualEventViewModel(application: Application) : AndroidViewMo
         _etGames.value = currentMap
     }
 
-    fun update(fragment : String, cardkey : String , fieldUpdated : String , updatedValue : String){
-        database.child(fragment).child(cardkey).child(fieldUpdated).setValue(updatedValue)
+    fun update(fragment : String, cardKey : String, fieldUpdated : String, updatedValue : String){
+        database.child(fragment).child(cardKey).child(fieldUpdated).setValue(updatedValue)
     }
 
     fun update(fragment: String,matchData: MatchData){

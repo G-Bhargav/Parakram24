@@ -1,9 +1,9 @@
 package com.explore.parakram24.adapters
 
-import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
@@ -17,6 +17,7 @@ import com.explore.parakram24.MatchData
 import kotlin.math.max
 import kotlin.math.min
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.google.android.material.circularreveal.cardview.CircularRevealCardView
 
 class IndividualEventAdapter(private var gamesList: List<MatchData>, private var current : String): RecyclerView.Adapter<IndividualEventAdapter.ViewHolder>()  {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -41,9 +42,10 @@ class IndividualEventAdapter(private var gamesList: List<MatchData>, private var
         val rightField1 : TextView = view.findViewById(R.id.tv_rightField1)
         val rightField2 : TextView = view.findViewById(R.id.tv_rightField2)
         val rightField3 : TextView = view.findViewById(R.id.tv_rightField3)
-        val llfield1: LinearLayoutCompat = view.findViewById(R.id.ll_field1)
-        val llfield2: LinearLayoutCompat = view.findViewById(R.id.ll_field2)
-        val llfield3: LinearLayoutCompat = view.findViewById(R.id.ll_field3)
+        val llField1: LinearLayoutCompat = view.findViewById(R.id.ll_field1)
+        val llField2: LinearLayoutCompat = view.findViewById(R.id.ll_field2)
+        val llField3: LinearLayoutCompat = view.findViewById(R.id.ll_field3)
+        val card : CircularRevealCardView = view.findViewById(R.id.rv_events_card)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IndividualEventAdapter.ViewHolder {
@@ -55,33 +57,41 @@ class IndividualEventAdapter(private var gamesList: List<MatchData>, private var
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val match = gamesList[position]
         holder.apply {
+
+            val date = "Date: "+match.date
+            val time = "Time: "+match.time
+            val venue = "Venue: ${match.venue}"
+
             leagueTextView.text = match.league
             team1Name.text = match.teamAname
             team2Name.text = match.teamBname
-            dateTextView.text = "Date: "+match.date
-            timeTextView.text = "Time: "+match.time
-            venueTextView.text = "Venue: ${match.venue}"
+            dateTextView.text = date
+            timeTextView.text = time
+            venueTextView.text = venue
 
             if(match.score.field1=="0"){
-                llfield1.visibility = View.GONE
+                llField1.visibility = View.GONE
             }
             else{
+                llField1.visibility = View.VISIBLE
                 leftField1.text = match.score.leftField1
                 field1.text = match.score.field1
                 rightField1.text = match.score.rightField1
             }
             if(match.score.field2=="0"){
-                llfield2.visibility = View.GONE
+                llField2.visibility = View.GONE
             }
             else{
+                llField2.visibility = View.VISIBLE
                 leftField2.text = match.score.leftField2
                 field2.text = match.score.field2
                 rightField2.text = match.score.rightField2
             }
             if(match.score.field3=="0"){
-                llfield3.visibility = View.GONE
+                llField3.visibility = View.GONE
             }
             else{
+                llField3.visibility = View.VISIBLE
                 leftField3.text = match.score.leftField3
                 field3.text = match.score.field3
                 rightField3.text = match.score.rightField3
@@ -127,6 +137,8 @@ class IndividualEventAdapter(private var gamesList: List<MatchData>, private var
             }
         }
 
+
+        holder.card.startAnimation(AnimationUtils.loadAnimation(holder.itemView.context,R.anim.recycler_view_animations))
     }
 
     override fun getItemCount(): Int {

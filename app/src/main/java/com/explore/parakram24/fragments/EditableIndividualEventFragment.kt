@@ -4,16 +4,19 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.TextView
 import androidx.appcompat.widget.AppCompatEditText
+import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.explore.parakram24.R
@@ -23,6 +26,7 @@ import com.explore.parakram24.viewmodel.EditableIndividualEventViewModel
 import kotlinx.coroutines.launch
 import com.explore.parakram24.MatchData
 import com.explore.parakram24.ScoreData
+import com.google.android.material.appbar.AppBarLayout
 
 class EditableIndividualEventFragment : Fragment(), OnFieldUpdateListener {
 
@@ -32,6 +36,7 @@ class EditableIndividualEventFragment : Fragment(), OnFieldUpdateListener {
     private lateinit var adapter : EditableIndividualEventAdapter
     private lateinit var dialog: Dialog
     private lateinit var swipeLayout : SwipeRefreshLayout
+    private val args : EventsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +48,11 @@ class EditableIndividualEventFragment : Fragment(), OnFieldUpdateListener {
             requireActivity(),
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
         )[EditableIndividualEventViewModel::class.java]
+
+        val appBar = activity?.findViewById<ConstraintLayout>(R.id.appBar)?.findViewById<AppBarLayout>(R.id.layoutAppBar)
+        val cardView = appBar?.findViewById<CardView>(R.id.cardView)
+        val tvTitle = cardView?.findViewById<TextView>(R.id.tvTitle)
+        tvTitle?.text = args.fragment
 
         binding.rvItemEditableEvent.layoutManager = LinearLayoutManager(context)
         binding.rvItemEditableEvent.setHasFixedSize(true)
@@ -107,7 +117,6 @@ class EditableIndividualEventFragment : Fragment(), OnFieldUpdateListener {
     }
 
     override fun openDialog(matchData: MatchData) {
-//        Log.i("infragment",matchData.toString())
         val alertDialog = LayoutInflater.from(context).inflate(R.layout.update_card, null)
 
         alertDialog.findViewById<AppCompatEditText>(R.id.uc_et_league).setText(matchData.league)

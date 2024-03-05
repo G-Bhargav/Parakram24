@@ -1,6 +1,5 @@
 package com.explore.parakram24.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +15,7 @@ import kotlin.math.max
 import kotlin.math.min
 
 class CoreteamAdapter(
-    private var teamlist: List<CoreTeamData>) :RecyclerView.Adapter<CoreteamAdapter.ViewHolder>() {
+    private var teamList: List<CoreTeamData>) :RecyclerView.Adapter<CoreteamAdapter.ViewHolder>() {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val image: ImageView = view.findViewById(R.id.iv_person)
         val name : TextView = view.findViewById(R.id.tv_name)
@@ -30,11 +29,11 @@ class CoreteamAdapter(
     }
 
     override fun getItemCount(): Int {
-        return teamlist.size
+        return teamList.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val person = teamlist[position]
+        val person = teamList[position]
         if (person.image.isEmpty()) {
             holder.image.setImageResource(R.drawable.ic_loading)
         } else {
@@ -47,13 +46,14 @@ class CoreteamAdapter(
             ).into(holder.image)
         }
         holder.name.text = person.name
-        holder.position.text = "${person.position} - ${person.team}"
+        val text =  "${person.position} - ${person.team}"
+        holder.position.text = text
 
     }
 
     fun setData(newData: List<CoreTeamData>) {
-        val sizeBefore = teamlist.size
-        teamlist = newData
+        val sizeBefore = teamList.size
+        teamList = newData
         val sizeAfter = newData.size
         notifyItemRangeChanged(0, min(sizeBefore, sizeAfter))
         notifyItemRangeInserted(min(sizeBefore, sizeAfter), max(sizeBefore, sizeAfter) - min(sizeBefore, sizeAfter))

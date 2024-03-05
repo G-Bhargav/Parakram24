@@ -14,7 +14,6 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.explore.parakram24.R
 import com.explore.parakram24.adapters.SponsorAdapter
 import com.explore.parakram24.databinding.FragmentSponsorsBinding

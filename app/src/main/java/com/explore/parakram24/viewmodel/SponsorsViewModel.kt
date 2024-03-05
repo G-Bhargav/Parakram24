@@ -25,7 +25,7 @@ class SponsorsViewModel(application: Application) : AndroidViewModel(application
                 _loading.value = true
 
                 val assetManager = getApplication<Application>().assets
-                val inputStream: InputStream = assetManager.open("sponsordata.json")
+                val inputStream: InputStream = assetManager.open("sponsorDataJSON.json")
                 val size = inputStream.available()
                 val buffer = ByteArray(size)
                 inputStream.read(buffer)

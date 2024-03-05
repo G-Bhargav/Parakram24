@@ -23,45 +23,45 @@
             android:layout_width="300dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
-            android:contentDescription="ivLogo"
-            android:elevation="20dp"
             android:layout_marginBottom="256dp"
             android:background="@drawable/card_background"
+            android:contentDescription="ivLogo"
+            android:elevation="20dp"
             android:src="@drawable/logo" />
 
-<!--        <com.google.android.material.circularreveal.cardview.CircularRevealCardView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_margin="8dp"-->
-<!--            app:cardCornerRadius="16dp"-->
-<!--            android:alpha="0.9"-->
-<!--            app:cardBackgroundColor="#DAD3A5">-->
+        <!--        <com.google.android.material.circularreveal.cardview.CircularRevealCardView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="8dp"-->
+        <!--            app:cardCornerRadius="16dp"-->
+        <!--            android:alpha="0.9"-->
+        <!--            app:cardBackgroundColor="#DAD3A5">-->
 
-<!--            <TextView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_margin="12dp"-->
-<!--                android:gravity="center"-->
-<!--                android:autoSizeTextType="uniform"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:text="@string/parakram"-->
-<!--                android:textSize="16sp" />-->
-
-
-<!--        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>-->
+        <!--            <TextView-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_margin="12dp"-->
+        <!--                android:gravity="center"-->
+        <!--                android:autoSizeTextType="uniform"-->
+        <!--                android:textColor="@color/black"-->
+        <!--                android:text="@string/parakram"-->
+        <!--                android:textSize="16sp" />-->
 
 
-<!--        <com.google.android.material.textview.MaterialTextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:layout_marginStart="8dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:text="Memories"-->
-<!--            android:padding="8dp"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:background="@drawable/bg_action_bar"-->
-<!--            android:textSize="24dp"/>-->
+        <!--        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>-->
+
+
+        <!--        <com.google.android.material.textview.MaterialTextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            android:layout_marginStart="8dp"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:text="Memories"-->
+        <!--            android:padding="8dp"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            android:background="@drawable/bg_action_bar"-->
+        <!--            android:textSize="24dp"/>-->
 
 
         <androidx.viewpager2.widget.ViewPager2
@@ -86,57 +86,57 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:paddingBottom="-32dp"
-            app:cardBackgroundColor="#1C100C">
+            android:alpha="0.9"
+            app:cardBackgroundColor="#212121">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#1C100C"
-                android:paddingBottom="20dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="20dp">
 
                 <ImageView
-                    android:layout_marginTop="-25dp"
                     android:layout_width="350dp"
                     android:layout_height="175dp"
-                    android:src="@drawable/logo"
                     android:layout_gravity="center"
-                    />
+                    android:layout_marginTop="-25dp"
+                    android:src="@drawable/logo" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_marginTop="-20dp"
+                    android:gravity="center"
                     android:text="Parakram '24"
-                    android:textSize="28sp"
-                    android:textColor="#FEC846"/>
+                    android:textColor="#FEC846"
+                    android:textSize="28sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Defy odds, Define Legacy"
-                    android:textSize="22sp"
-                    android:textColor="#B92F2F"/>
+                    android:textColor="#B92F2F"
+                    android:textSize="22sp" />
 
 
                 <com.google.android.material.circularreveal.cardview.CircularRevealCardView
                     android:id="@+id/comingsoon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/transparent"
                     android:layout_marginStart="32dp"
                     android:layout_marginEnd="32dp"
                     android:alpha="0.8"
+                    android:backgroundTint="@color/transparent"
                     android:padding="8dp"
                     app:cardCornerRadius="8dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        >
+                        android:backgroundTint="@color/transparent"
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/finished_id"
@@ -171,8 +171,8 @@
                                     style="@style/h3"
                                     android:layout_width="fill_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="00"
                                     android:gravity="center"
+                                    android:text="00"
                                     android:textStyle="bold" />
 
                                 <TextView
@@ -197,10 +197,10 @@
                                 <TextView
                                     android:id="@+id/txtHour"
                                     style="@style/h3"
-                                    android:text="00"
                                     android:layout_width="fill_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
+                                    android:text="00"
                                     android:textStyle="bold" />
 
                                 <TextView
@@ -282,50 +282,50 @@
                 <Button
                     android:id="@+id/eventBrochure"
                     android:layout_width="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
+                    android:layout_gravity="center"
                     android:layout_marginBottom="-10dp"
-                    android:text="Events Brochure"
-                    android:drawableLeft="@drawable/ic_download"
                     android:backgroundTint="#DAAD3F"
-                    android:textSize="12sp"/>
+                    android:drawableLeft="@drawable/ic_download"
+                    android:padding="10dp"
+                    android:text="Events Brochure"
+                    android:textSize="12sp" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/rulebook"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:layout_marginStart="8dp"
-                    android:text="Rulebook"
-                    android:backgroundTint="#DAAD3F"
-                    android:drawableLeft="@drawable/ic_download"
-                    android:textSize="12sp"/>
-                <Button
-                    android:id="@+id/noc"
-                    android:layout_margin="8dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="NOC'24"
-                    android:backgroundTint="#DAAD3F"
-                    android:drawableLeft="@drawable/ic_download"
-                    android:textSize="12sp"/>
+                    <Button
+                        android:id="@+id/rulebook"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#DAAD3F"
+                        android:drawableLeft="@drawable/ic_download"
+                        android:padding="10dp"
+                        android:text="Rulebook"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/noc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#DAAD3F"
+                        android:drawableLeft="@drawable/ic_download"
+                        android:padding="10dp"
+                        android:text="NOC'24"
+                        android:textSize="12sp" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <View
                     android:layout_width="0dp"
-                    android:layout_height="16dp"/>
-
+                    android:layout_height="16dp" />
 
             </LinearLayout>
 
