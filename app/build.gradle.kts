@@ -15,8 +15,8 @@ android {
         applicationId = "com.explore.parakram24"
         minSdk = 24
         targetSdk = 34
-        versionCode = 6
-        versionName = "1.6"
+        versionCode = 9
+        versionName = "1.8"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -61,6 +61,7 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.material3.android)
     implementation(libs.firebase.database)
+    implementation(libs.volley)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -68,4 +69,5 @@ dependencies {
     implementation(libs.picasso)
     implementation(libs.gson)
     implementation(libs.lottie)
+    implementation(libs.firebase.messaging)
 }

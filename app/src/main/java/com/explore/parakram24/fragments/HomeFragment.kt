@@ -2,6 +2,7 @@ package com.explore.parakram24.fragments
 
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -14,6 +15,8 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -116,8 +119,11 @@ class HomeFragment : Fragment() {
                         binding.txtSecond.text = "" + String.format("%02d",seconds)
                     }
                     else {
-                        countDownEnd()
-//                        binding.textCounterDown.text = "Parakram'24 is Live"
+                        binding.comingsoon.visibility = View.INVISIBLE
+                        binding.txtDay.visibility = View.INVISIBLE
+                        binding.txtHour.visibility = View.INVISIBLE
+                        binding.txtMinute.visibility = View.INVISIBLE
+                        binding.txtSecond.visibility = View.INVISIBLE
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -126,50 +132,6 @@ class HomeFragment : Fragment() {
         }
         handler.postDelayed(runnable, 1 * 1000)
 
-    }
-
-
-
-    fun countDownEnd(){
-        @Suppress("DEPRECATION") val handler = Handler()
-        val runnable = object : Runnable {
-            @SuppressLint("SetTextI18n", "SimpleDateFormat")
-            override fun run() {
-                handler.postDelayed(this, 1000)
-                try {
-                    val currentDate = Date()
-                    val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-                    val futureDate: Date = dateFormat.parse("2024-03-10 00:00:00")!!
-                    if (!currentDate.after(futureDate)) {
-
-                        var diff: Long = (futureDate.time
-                                - currentDate.time)
-                        val days = diff / (24 * 60 * 60 * 1000)
-                        diff -= days * (24 * 60 * 60 * 1000)
-                        val hours = diff / (60 * 60 * 1000)
-                        diff -= hours * (60 * 60 * 1000)
-                        val minutes = diff / (60 * 1000)
-                        diff -= minutes * (60 * 1000)
-                        val seconds = diff / 1000
-                        binding.txtDay.text = "" + String.format("%02d", days)
-                        binding.txtHour.text = "" + String.format("%02d", hours)
-                        binding.txtMinute.text = "" + String.format("%02d", minutes)
-                        binding.txtSecond.text = "" + String.format("%02d",seconds)
-                    }
-                    else {
-//                        binding.textCounterDown.text = "Parakram'24 is  Over"
-                        binding.txtDay.visibility = View.INVISIBLE
-                        binding.txtHour.visibility = View.INVISIBLE
-                        binding.txtMinute.visibility = View.INVISIBLE
-                        binding.txtSecond.visibility = View.INVISIBLE
-
-                    }
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            }
-        }
-        handler.postDelayed(runnable,  1 * 1000)
     }
 
     private fun addDotsIndicator() {

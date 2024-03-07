@@ -27,6 +27,16 @@
                     android:icon="@drawable/ic_sponsors"
                     android:title="Sponsors" />
 
+                <item
+                    android:id="@+id/announcementFragment"
+                    android:icon="@drawable/ic_announcement"
+                    android:title="Announcements"/>
+
+<!--                <item-->
+<!--                    android:id="@+id/notificationFragment"-->
+<!--                    android:icon="@drawable/ic_profile"-->
+<!--                    android:title="send notification"/>-->
+
 
 
 <!--                <item android:id="@+id/singleEventFragment"-->

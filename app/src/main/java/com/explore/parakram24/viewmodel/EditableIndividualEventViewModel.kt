@@ -2,18 +2,21 @@ package com.explore.parakram24.viewmodel
 
 import android.app.Application
 import android.util.Log
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.explore.parakram24.EventData
 import com.explore.parakram24.MatchData
-import com.explore.parakram24.fragments.currentFragment
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.launch
 import java.io.IOException
 import java.util.Date
@@ -25,13 +28,13 @@ class EditableIndividualEventViewModel(application: Application) : AndroidViewMo
     val loading : LiveData<Boolean> get() = _loading
     private lateinit var database: DatabaseReference
 
-    fun fetchData(){
+    fun fetchData(fragment: String){
         viewModelScope.launch {
             try {
                 _loading.value = true
-                Log.i("currentFragment", currentFragment)
+                Log.i("currentFragment", fragment)
                 database = Firebase.database.reference
-                database.child(currentFragment).addValueEventListener(object : ValueEventListener {
+                database.child(fragment).addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if (snapshot.exists()) {
                             val newData = mutableListOf<MatchData>()
@@ -45,7 +48,8 @@ class EditableIndividualEventViewModel(application: Application) : AndroidViewMo
                                 }
 
                             }
-                            addGameData(currentFragment,newData)
+                            newData.reverse()
+                            addGameData(fragment,newData)
                         }
                         _loading.value = false
                     }
@@ -64,10 +68,10 @@ class EditableIndividualEventViewModel(application: Application) : AndroidViewMo
         }
     }
 
-    fun addNewGame(){
+    fun addNewGame(fragment: String){
         val currentDate = Date()
-        val newMatchData = MatchData(key = currentDate.toString())
-        database.child(currentFragment).child(currentDate.toString()).setValue(newMatchData)
+        val newMatchData = MatchData(key = currentDate.toString().substring(4))
+        database.child(fragment).child(currentDate.toString().substring(4)).setValue(newMatchData)
     }
 
     fun addGameData(gameKey: String, list : MutableList<MatchData>) {
@@ -86,5 +90,23 @@ class EditableIndividualEventViewModel(application: Application) : AndroidViewMo
 
     fun delete(fragment: String, key : String){
         database.child(fragment).child(key).setValue(null)
+    }
+
+    fun getColleges() : MutableMap<String, String>{
+        val newData = mutableMapOf<String,String>()
+        Firebase.database.reference.child("colleges").get().addOnSuccessListener {
+            //Log.i("data",it.value.toString())
+
+            for (k in it.children) {
+                try {
+                    newData[k.key ?: "IIT ISM"] = k.value.toString()
+                    Log.i("data",k.value.toString())
+                }catch (e :Error  ){
+                    Log.i("error",e.message.toString())
+                }
+
+            }
+        }
+        return newData
     }
 }

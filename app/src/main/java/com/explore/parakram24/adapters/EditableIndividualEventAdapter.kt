@@ -1,5 +1,6 @@
 package com.explore.parakram24.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -24,10 +26,8 @@ class EditableIndividualEventAdapter(private var etGamesList: List<MatchData>, p
         val leagueTextView: TextView = view.findViewById(R.id.league)
         val team1Image: ImageView = view.findViewById(R.id.team1Image)
         val team1Name: TextView = view.findViewById(R.id.team1name)
-        val buttonFav1: CheckBox = view.findViewById(R.id.button_fav1)
         val team2Image: ImageView = view.findViewById(R.id.team2Image)
         val team2Name: TextView = view.findViewById(R.id.team2name)
-        val buttonFav2: CheckBox = view.findViewById(R.id.button_fav2)
         val dateTextView: TextView = view.findViewById(R.id.date)
         val timeTextView: TextView = view.findViewById(R.id.time)
         val venueTextView: TextView = view.findViewById(R.id.venue)
@@ -57,16 +57,12 @@ class EditableIndividualEventAdapter(private var etGamesList: List<MatchData>, p
         val match = etGamesList[position]
         holder.apply {
 
-            val date = "Date: "+match.date
-            val time = "Time: "+match.time
-            val venue = "Venue: ${match.venue}"
-
             leagueTextView.text = match.league
             team1Name.text = match.teamAname
             team2Name.text = match.teamBname
-            dateTextView.text = date
-            timeTextView.text = time
-            venueTextView.text = venue
+            dateTextView.text = match.date
+            timeTextView.text = match.time
+            venueTextView.text = match.venue
             leftField1.text = match.score.leftField1
             field1.text = match.score.field1
             rightField1.text = match.score.rightField1
@@ -109,19 +105,6 @@ class EditableIndividualEventAdapter(private var etGamesList: List<MatchData>, p
             listener.openDialog(match)
         }
 
-        holder.buttonFav1.setOnClickListener {
-            if(holder.buttonFav1.isChecked && holder.buttonFav2.isChecked){
-                holder.buttonFav1.isChecked = true
-                holder.buttonFav2.isChecked = false
-            }
-        }
-        holder.buttonFav2.setOnClickListener {
-            if(holder.buttonFav2.isChecked && holder.buttonFav1.isChecked){
-                holder.buttonFav2.isChecked = true
-                holder.buttonFav1.isChecked = false
-            }
-        }
-
     }
 
 
@@ -130,12 +113,25 @@ class EditableIndividualEventAdapter(private var etGamesList: List<MatchData>, p
     }
 
     fun setData(newData: List<MatchData>) {
-        val sizeBefore = etGamesList.size
-        etGamesList = newData
-        val sizeAfter = newData.size
-        notifyItemRangeChanged(0, min(sizeBefore, sizeAfter))
-        notifyItemRangeInserted(min(sizeBefore, sizeAfter), max(sizeBefore, sizeAfter) - min(sizeBefore, sizeAfter))
-        notifyItemRangeRemoved(max(sizeBefore, sizeAfter), max(sizeBefore, sizeAfter) - min(sizeBefore, sizeAfter))
+        val oldData = ArrayList(etGamesList) // Make a copy of the old data
+        etGamesList = newData // Update gamesList with the new data
+        Log.i("old",oldData.toString())
+        Log.i("new",newData.toString())
+
+        val diffResult = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
+            override fun getOldListSize(): Int = oldData.size
+            override fun getNewListSize(): Int = newData.size
+
+            override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+                return oldData[oldItemPosition].key == newData[newItemPosition].key // Assuming each item has a unique identifier
+            }
+
+            override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+                return oldData[oldItemPosition] == newData[newItemPosition]
+            }
+        })
+
+        diffResult.dispatchUpdatesTo(this) // Dispatch updates to the adapter
     }
 
 }

@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:id="@+id/rv_events_card"
-    android:backgroundTint="@color/black"
+    android:backgroundTint="@color/transparent"
     app:cardCornerRadius="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,13 +40,6 @@
             app:layout_constraintTop_toBottomOf="@+id/league"
             app:shapeAppearance="@style/CornerCut" />
 
-        <!--        <androidx.appcompat.widget.AppCompatImageView-->
-        <!--            android:layout_width="30dp"-->
-        <!--            android:layout_height="30dp"-->
-        <!--            app:layout_constraintStart_toStartOf="@id/team1Image"-->
-        <!--            app:layout_constraintBottom_toBottomOf="@id/team1Image"-->
-        <!--            android:src="@drawable/baseline_celebration_24"/>-->
-
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/team1name"
@@ -55,36 +48,13 @@
             android:layout_margin="4dp"
             android:ellipsize="end"
             android:gravity="center"
-            android:maxWidth="60dp"
+            android:maxWidth="120dp"
             android:text="TEAMA"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@id/team1Image"
-            app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintStart_toStartOf="@id/team1Image"
             app:layout_constraintTop_toBottomOf="@id/team1Image" />
 
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/button_fav1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:button="@drawable/fav_button_event"
-            android:textOff=""
-            android:textOn=""
-            app:layout_constraintBottom_toBottomOf="@+id/team1name"
-            app:layout_constraintEnd_toEndOf="@+id/team1Image"
-            app:layout_constraintStart_toEndOf="@+id/team1name"
-            app:layout_constraintTop_toTopOf="@id/team1name" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@+id/button_fav1"
-            app:layout_constraintStart_toStartOf="@+id/button_fav1"
-            app:layout_constraintTop_toBottomOf="@id/button_fav1"
-            android:layout_marginTop="-4dp"
-            android:textColor="@color/white"
-            android:text="12"
-            />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/team2Image"
@@ -101,25 +71,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
+            android:ellipsize="end"
             android:gravity="center"
+            android:maxWidth="120dp"
             android:text="TEAMB"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@id/team2Image"
-            app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintStart_toStartOf="@id/team2Image"
             app:layout_constraintTop_toBottomOf="@id/team2Image" />
-
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/button_fav2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:button="@drawable/fav_button_event"
-            android:textOff=""
-            android:textOn=""
-            app:layout_constraintBottom_toBottomOf="@+id/team2name"
-            app:layout_constraintEnd_toEndOf="@+id/team2Image"
-            app:layout_constraintStart_toEndOf="@+id/team2name"
-            app:layout_constraintTop_toTopOf="@id/team2name" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/date"

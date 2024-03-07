@@ -71,7 +71,7 @@ class IndividualEventFragment : Fragment() {
         }
 
         viewModel.games.observe(viewLifecycleOwner) { data  ->
-            data[currentFragment]?.let { adapter.setData(it) }
+            data[args.fragment]?.let { adapter.setData(it) }
         }
 
         viewModel.fetchData(args.fragment)
@@ -118,7 +118,6 @@ class IndividualEventFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        currentFragment = "home"
         _binding=null
     }
 

@@ -6,7 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.explore.parakram24.MatchData
+import com.explore.parakram24.NotificationData
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -18,34 +18,32 @@ import kotlinx.coroutines.launch
 import java.io.IOException
 import java.util.Date
 
-class IndividualEventViewModel(application: Application) : AndroidViewModel(application) {
-    private val _games = MutableLiveData<MutableMap<String, List<MatchData>>>()
-    val games: LiveData<MutableMap<String, List<MatchData>>> get() = _games
+class NotificationViewModel(application: Application) : AndroidViewModel(application) {
+    private val _notificationData = MutableLiveData<List<NotificationData>>()
+    val notificationData : LiveData<List<NotificationData>> get() = _notificationData
 
-    private val _eventLoading = MutableLiveData<Boolean>()
-    val eventLoading: LiveData<Boolean> get() = _eventLoading
+    private val _loading = MutableLiveData<Boolean>()
+    val loading : LiveData<Boolean> get() = _loading
+    private val _dataLoaded = MutableLiveData<Boolean>()
+    val dataLoaded: LiveData<Boolean> get() = _dataLoaded
     private lateinit var database: DatabaseReference
 
-    private val _data = MutableLiveData<Boolean>()
-    val data: LiveData<Boolean> get() = _data
 
-
-
-    fun fetchData(current: String) {
-        _eventLoading.value = true
-        _data.value = true
+    fun fetchData() {
+        _loading.value = true
+        _dataLoaded.value= true
         viewModelScope.launch {
             try {
                 Log.i("currentTime in fetch data :", Date().toString())
-                Log.i("current", current)
                 database = Firebase.database.reference
-                database.child(current).addValueEventListener(object : ValueEventListener {
+                database.child("notifications").addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if (snapshot.exists()) {
-                            val newData = mutableListOf<MatchData>()
+                            val newData = mutableListOf<NotificationData>()
                             for (k in snapshot.children) {
                                 try {
-                                    val data = k.getValue(MatchData::class.java) ?: MatchData()
+                                    val data = k.getValue(NotificationData::class.java) ?: NotificationData()
+                                    Log.i("notification",data.toString())
                                     newData.add(data)
                                 } catch (e: Error) {
                                     Log.i("error", e.message.toString())
@@ -53,18 +51,18 @@ class IndividualEventViewModel(application: Application) : AndroidViewModel(appl
                             }
                             viewModelScope.launch {
                                 delay(500) // Delay for 500 milliseconds
-                                _eventLoading.value = false
+                                _loading.value = false
                             }
                             newData.reverse()
-                            addGameData(current, newData)
-                            _data.value = true //i want to update this only after 500 millis delay
+                            _notificationData.value = newData
+                            _dataLoaded.value = true //i want to update this only after 500 millis delay
                         }
                         else{
                             viewModelScope.launch {
                                 delay(500) // Delay for 500 milliseconds
-                                _eventLoading.value = false
+                                _loading.value = false
                             }
-                            _data.value = false
+                            _dataLoaded.value = false
                         }
                     }
 
@@ -72,9 +70,9 @@ class IndividualEventViewModel(application: Application) : AndroidViewModel(appl
                         Log.i("error", error.message)
                         viewModelScope.launch {
                             delay(500) // Delay for 500 milliseconds
-                            _eventLoading.value = false
+                            _loading.value = false
                         }
-                        _data.value = false
+                        _dataLoaded.value = false
                     }
 
                 })
@@ -82,14 +80,11 @@ class IndividualEventViewModel(application: Application) : AndroidViewModel(appl
 
             } catch (e: IOException) {
                 Log.d("IndividualEventsViewModel", e.toString())
-                _eventLoading.value = false
+                _loading.value = false
             }
         }
     }
 
-    fun addGameData(gameKey: String, list: MutableList<MatchData>?) {
-        val currentMap = _games.value ?: mutableMapOf()
-        currentMap[gameKey] = list ?: listOf()
-        _games.value = currentMap
-    }
+
+
 }

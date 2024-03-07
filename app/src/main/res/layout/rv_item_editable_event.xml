@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:id="@+id/rv_events_card"
-    android:backgroundTint="@color/black"
+    android:backgroundTint="@color/transparent"
     app:cardCornerRadius="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -47,6 +47,7 @@
             android:gravity="center"
             android:text="FINAL"
             android:textSize="14dp"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="parent"
@@ -69,23 +70,16 @@
             android:layout_margin="4dp"
             android:background="@color/transparent"
             android:text="TEAMA"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxWidth="120dp"
+            android:textColor="@color/white"
             android:textSize="14dp"
+            app:layout_constraintBottom_toTopOf="@+id/et_ll_score"
             app:layout_constraintEnd_toEndOf="@id/et_team1Image"
-            app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintStart_toStartOf="@id/et_team1Image"
             app:layout_constraintTop_toBottomOf="@id/et_team1Image" />
 
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/et_button_fav1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:button="@drawable/fav_button_event"
-            android:textOff=""
-            android:textOn=""
-            app:layout_constraintBottom_toBottomOf="@+id/et_team1name"
-            app:layout_constraintEnd_toEndOf="@+id/et_team1Image"
-            app:layout_constraintStart_toEndOf="@+id/et_team1name"
-            app:layout_constraintTop_toTopOf="@id/et_team1name" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/et_team2Image"
@@ -105,22 +99,13 @@
             android:background="@color/transparent"
             android:text="TEAMB"
             android:textSize="14dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxWidth="120dp"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@id/et_team2Image"
-            app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintStart_toStartOf="@id/et_team2Image"
             app:layout_constraintTop_toBottomOf="@id/et_team2Image" />
-
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/et_button_fav2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:button="@drawable/fav_button_event"
-            android:textOff=""
-            android:textOn=""
-            app:layout_constraintBottom_toBottomOf="@+id/et_team2name"
-            app:layout_constraintEnd_toEndOf="@+id/et_team2Image"
-            app:layout_constraintStart_toEndOf="@+id/et_team2name"
-            app:layout_constraintTop_toTopOf="@id/et_team2name" />
 
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -131,6 +116,7 @@
             android:background="@color/transparent"
             android:text="Date : 03/02/2024 "
             android:textSize="14dp"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/et_time"
             app:layout_constraintEnd_toEndOf="@+id/et_team2Image"
             app:layout_constraintStart_toStartOf="@id/et_team1Image"
@@ -144,6 +130,7 @@
             android:background="@color/transparent"
             android:text="TIME : 8:00AM "
             android:textSize="14dp"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/et_team2Image"
             app:layout_constraintStart_toStartOf="@+id/et_team1Image"
             app:layout_constraintTop_toBottomOf="@+id/et_date" />
@@ -156,6 +143,7 @@
             android:layout_gravity="center"
             android:text="Vs"
             android:textSize="50dp"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/et_venue"
             app:layout_constraintEnd_toEndOf="@+id/et_team2Image"
             app:layout_constraintStart_toStartOf="parent"
@@ -172,6 +160,7 @@
             android:focusable="true"
             android:text="VENUE : SAC "
             android:textSize="14dp"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/et_team2Image"
             app:layout_constraintEnd_toEndOf="@id/et_team2Image"
             app:layout_constraintStart_toStartOf="@id/et_team1Image" />
@@ -185,13 +174,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_team2name"
             tools:layout_editor_absoluteX="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:textColor="@color/white"
                 android:text="Score:"
                 android:textSize="20dp" />
 
@@ -215,6 +204,7 @@
                     android:layout_weight="2"
                     android:background="@color/transparent"
                     android:gravity="center"
+                    android:textColor="@color/white"
                     android:text="210" />
 
                 <ImageButton
@@ -232,6 +222,7 @@
                     android:background="@color/transparent"
                     android:gravity="center"
                     android:text="Runs"
+                    android:textColor="@color/white"
                     android:textSize="16dp" />
 
                 <ImageButton
@@ -249,6 +240,7 @@
                     android:layout_weight="2"
                     android:background="@color/transparent"
                     android:gravity="center"
+                    android:textColor="@color/white"
                     android:text="20" />
 
                 <ImageButton
@@ -280,6 +272,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="2"
                     android:background="@color/transparent"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:text="2/10" />
 
@@ -298,6 +291,7 @@
                     android:background="@color/transparent"
                     android:gravity="center"
                     android:text="Wickets(10)"
+                    android:textColor="@color/white"
                     android:textSize="16dp" />
 
                 <ImageButton
@@ -314,6 +308,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="2"
+                    android:textColor="@color/white"
                     android:background="@color/transparent"
                     android:gravity="center"
                     android:inputType="numberDecimal"

@@ -1,7 +1,9 @@
 package com.explore.parakram24.fragments
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,32 +11,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.TextView
-import androidx.cardview.widget.CardView
-import androidx.constraintlayout.widget.ConstraintLayout
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
-import com.explore.parakram24.R
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.explore.parakram24.adapters.EventsAdapter
-import com.explore.parakram24.databinding.FragmentEventsBinding
-import com.explore.parakram24.viewmodel.EventsViewModel
-import com.google.android.material.appbar.AppBarLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.explore.parakram24.R
+import com.explore.parakram24.adapters.AnnouncementAdapter
+import com.explore.parakram24.adapters.SponsorAdapter
+import com.explore.parakram24.databinding.FragmentAnnouncementBinding
+import com.explore.parakram24.viewmodel.NotificationViewModel
+import com.explore.parakram24.viewmodel.SponsorsViewModel
 
-class EventsFragment : Fragment() {
 
-    private var _binding : FragmentEventsBinding?= null
+class AnnouncementFragment : Fragment() {
+
+    private var _binding : FragmentAnnouncementBinding?=null
     private val binding get() = _binding!!
-    private lateinit var viewModel: EventsViewModel
-    private lateinit var adapter : EventsAdapter
+    private lateinit var viewModel: NotificationViewModel
+    private lateinit var adapter : AnnouncementAdapter
+    private lateinit var swipeLayout : SwipeRefreshLayout
     private lateinit var dialog: Dialog
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding= FragmentEventsBinding.inflate(layoutInflater)
+        _binding = FragmentAnnouncementBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -43,22 +46,12 @@ class EventsFragment : Fragment() {
         viewModel = ViewModelProvider(
             requireActivity(),
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
-        )[EventsViewModel::class.java]
+        )[NotificationViewModel::class.java]
 
-        binding.rvEvents.layoutManager= GridLayoutManager(context, 3)
-        binding.rvEvents.setHasFixedSize(true)
-
-        val navController = findNavController()
-        adapter = EventsAdapter(emptyList()){
-            //For General Users :
-            val action = EventsFragmentDirections.eventToindiEvent(it)
-            navController.navigate(action)
-            //For admin app
-//            val action = EventsFragmentDirections.eventToEditableEvent(it)
-//            navController.navigate(action)
-        }
-
-        binding.rvEvents.adapter = adapter
+        binding.rvNotifications.layoutManager = LinearLayoutManager(context)
+        binding.rvNotifications.setHasFixedSize(true)
+        adapter = AnnouncementAdapter(emptyList())
+        binding.rvNotifications.adapter = adapter
 
         dialog = Dialog(requireActivity())
         dialog.setContentView(R.layout.loadingcard)
@@ -81,6 +74,16 @@ class EventsFragment : Fragment() {
 
         }
 
+        viewModel.dataLoaded.observe(viewLifecycleOwner){isData ->
+            Log.i("isdata",isData.toString())
+            if(isData){
+                binding.notificationsLoading.visibility= View.GONE
+            }
+            else{
+                binding.notificationsLoading.visibility = View.VISIBLE
+            }
+        }
+
 
         viewModel.loading.observe(viewLifecycleOwner) { showLoading ->
             if (showLoading) {
@@ -90,16 +93,18 @@ class EventsFragment : Fragment() {
             }
         }
 
-        viewModel.eventData.observe(viewLifecycleOwner) { data ->
+        viewModel.notificationData.observe(viewLifecycleOwner) { data ->
             adapter.setData(data)
         }
 
         viewModel.fetchData()
-    }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        swipeLayout = binding.swipeLayoutNotifications
+        swipeLayout.setOnRefreshListener {
+            viewModel.fetchData()
+            swipeLayout.isRefreshing = false
+        }
+
     }
 
 }

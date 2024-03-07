@@ -40,3 +40,6 @@ data class EventData(val name: String= "",val image: String="")
 
 @Keep
 data class SponsorData(val image: String = "", val link: String = "")
+
+@Keep
+data class  NotificationData(val title : String= "", val body : String ="")

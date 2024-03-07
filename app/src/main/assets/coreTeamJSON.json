@@ -272,5 +272,57 @@
 		"position": "Supervisor",
 		"team": "Technical and Support Team",
 		"image": ""
+	},
+	{
+		"name": "Gande Bhargav",
+		"position" : "Developer",
+		"team" : "Technical Team",
+		"image" : "https://res.cloudinary.com/dgpgsuay1/image/upload/v1696327151/SAVE_20230819_073836_nuhp2p.jpg"
+	},
+	{
+		"name": "Ratul Saha",
+		"position" : "Developer",
+		"team" : "Technical Team",
+		"image":"https://res.cloudinary.com/dkdratnao/image/upload/v1704435839/ratul_bhpxc1.jpg"
+
+	},
+	{
+		"name": "Harsh Singh",
+		"position" : "Developer",
+		"team" : "Technical Team",
+		"image":"https://res.cloudinary.com/dhriluafq/image/upload/v1708078762/WhatsApp_Image_2024-02-16_at_15.22.37_d7zgvk.jpg"
+
+	},
+	{
+		"name": "Prakhar Srivastava",
+		"position" : "Developer",
+		"team" : "Technical Team",
+		"image":"https://res.cloudinary.com/dkdratnao/image/upload/v1704435839/prakkharSri_yxwzbx.jpg"
+	},
+	{
+		"name": "Marmick Mathur",
+		"position" : "Developer",
+		"team" : "Technical Team",
+		"image":"https://res.cloudinary.com/dmf9vpeu2/image/upload/v1708957830/WhatsApp_Image_2024-02-16_at_16.01.03_qseijl_ga41fg.jpg"
+	},
+	{
+		"name": "Yash Sharma",
+		"position" : "Developer",
+		"team" : "Technical Team",
+		"image":"https://res.cloudinary.com/dhriluafq/image/upload/v1708078411/WhatsApp_Image_2024-02-16_at_14.48.19_x6cmsm.jpg"
+
+	},
+	{
+		"name": "Ayush Barman",
+		"position" : "Developer",
+		"team" : "Technical Team",
+		"image":"https://res.cloudinary.com/dhriluafq/image/upload/v1708079015/IMG_20240216_154753_tudk4c.jpg"
+
+	},
+	{
+		"name": "Subham Dey",
+		"position" : "Developer",
+		"team" : "Technical Team",
+		"image":"https://res.cloudinary.com/dhriluafq/image/upload/v1708078676/WhatsApp_Image_2024-02-16_at_15.40.44_gjyixe.jpg"
 	}
 ]

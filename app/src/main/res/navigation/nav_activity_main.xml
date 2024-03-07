@@ -80,4 +80,17 @@
             app:argType="string" />
     </fragment>
 
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.explore.parakram24.fragments.NotificationFragment"
+        android:label="notification"
+        tools:layout="@layout/fragment_notification"
+        />
+
+    <fragment
+        android:id="@+id/announcementFragment"
+        android:name="com.explore.parakram24.fragments.AnnouncementFragment"
+        android:label="Announcements"
+        tools:layout="@layout/fragment_announcement"/>
+
 </navigation>

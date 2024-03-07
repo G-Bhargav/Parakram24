@@ -29,41 +29,6 @@
             android:elevation="20dp"
             android:src="@drawable/logo" />
 
-        <!--        <com.google.android.material.circularreveal.cardview.CircularRevealCardView-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_margin="8dp"-->
-        <!--            app:cardCornerRadius="16dp"-->
-        <!--            android:alpha="0.9"-->
-        <!--            app:cardBackgroundColor="#DAD3A5">-->
-
-        <!--            <TextView-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_margin="12dp"-->
-        <!--                android:gravity="center"-->
-        <!--                android:autoSizeTextType="uniform"-->
-        <!--                android:textColor="@color/black"-->
-        <!--                android:text="@string/parakram"-->
-        <!--                android:textSize="16sp" />-->
-
-
-        <!--        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>-->
-
-
-        <!--        <com.google.android.material.textview.MaterialTextView-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginTop="16dp"-->
-        <!--            android:layout_marginStart="8dp"-->
-        <!--            android:layout_gravity="center"-->
-        <!--            android:text="Memories"-->
-        <!--            android:padding="8dp"-->
-        <!--            android:textColor="@color/white"-->
-        <!--            android:background="@drawable/bg_action_bar"-->
-        <!--            android:textSize="24dp"/>-->
-
-
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager_carousel"
             android:layout_width="match_parent"
@@ -287,6 +252,7 @@
                     android:layout_marginBottom="-10dp"
                     android:backgroundTint="#DAAD3F"
                     android:drawableLeft="@drawable/ic_download"
+                    android:textColor="@color/black"
                     android:padding="10dp"
                     android:text="Events Brochure"
                     android:textSize="12sp" />
@@ -305,6 +271,7 @@
                         android:layout_weight="1"
                         android:backgroundTint="#DAAD3F"
                         android:drawableLeft="@drawable/ic_download"
+                        android:textColor="@color/black"
                         android:padding="10dp"
                         android:text="Rulebook"
                         android:textSize="12sp" />
@@ -318,6 +285,7 @@
                         android:layout_weight="1"
                         android:backgroundTint="#DAAD3F"
                         android:drawableLeft="@drawable/ic_download"
+                        android:textColor="@color/black"
                         android:padding="10dp"
                         android:text="NOC'24"
                         android:textSize="12sp" />
